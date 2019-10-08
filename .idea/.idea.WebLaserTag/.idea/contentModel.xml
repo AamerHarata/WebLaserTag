@@ -7,6 +7,9 @@
     <e p="C:\Users\Aamer\.Rider2018.3\system\resharper-host\local\Transient\ReSharperHost\v183\SolutionCaches\_WebLaserTag.1669739660.00" t="ExcludeRecursive" />
     <e p="D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag" t="IncludeRecursive">
       <e p=".env" t="Include" />
+      <e p="api" t="Include">
+        <e p="Receiver.cs" t="Include" />
+      </e>
       <e p="app.db" t="Include" />
       <e p="appsettings.Development.json" t="Include" />
       <e p="appsettings.json" t="Include" />

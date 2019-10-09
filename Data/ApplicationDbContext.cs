@@ -1,4 +1,5 @@
 using Microsoft.EntityFrameworkCore;
+using WebLaserTag.Models;
 
 namespace WebLaserTag.Data
 {
@@ -7,5 +8,7 @@ namespace WebLaserTag.Data
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
         }
+        
+        public DbSet<PlayerData> PlayersData { get; set; }
     }
 }

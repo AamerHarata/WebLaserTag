@@ -30,6 +30,7 @@
       </e>
       <e p="Models" t="Include">
         <e p="ErrorViewModel.cs" t="Include" />
+        <e p="PlayerData.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">
@@ -43,6 +44,9 @@
       <e p="Properties" t="Include">
         <e p="launchSettings.json" t="Include" />
       </e>
+      <e p="Services" t="Include">
+        <e p="EnumList.cs" t="Include" />
+      </e>
       <e p="Startup.cs" t="Include" />
       <e p="Views" t="Include">
         <e p="_ViewImports.cshtml" t="Include" />
@@ -50,10 +54,12 @@
         <e p="Home" t="Include">
           <e p="Index.cshtml" t="Include" />
           <e p="Privacy.cshtml" t="Include" />
+          <e p="ReceiveData.cshtml" t="Include" />
         </e>
         <e p="Shared" t="Include">
           <e p="_CookieConsentPartial.cshtml" t="Include" />
           <e p="_Layout.cshtml" t="Include" />
+          <e p="_LiveData.cshtml" t="Include" />
           <e p="_ValidationScriptsPartial.cshtml" t="Include" />
           <e p="Error.cshtml" t="Include" />
         </e>

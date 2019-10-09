@@ -28,3 +28,5 @@ D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.
 D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\WebLaserTag.dll
 D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\WebLaserTag.pdb
 D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\WebLaserTag.csproj.CopyComplete
+D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\Razor\Views\Home\ReceiveData.g.cshtml.cs
+D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LiveData.g.cshtml.cs

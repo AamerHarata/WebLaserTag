@@ -1,0 +1,38 @@
+
+@{
+    ViewBag.Title = "Receiver";
+    Layout = "_Layout";
+}
+
+<div class="text-center">
+    <h5 class="display-4">Live Data Receiver</h5>
+</div>
+
+
+<div class="text-center" id="data-container">
+    
+</div>
+
+
+@section Scripts
+{
+    <script>
+        $(document).ready(function() {
+
+
+            setInterval(function() { getData() }, 500);
+
+
+            function getData() {
+                $.ajax({
+                    type: "GET",
+                    url: "/LiveData/",
+                    success: function(response) {
+                        $("#data-container").html(response);
+                    }
+                });
+            }
+
+        });
+    </script>
+}

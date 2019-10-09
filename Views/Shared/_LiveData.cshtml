@@ -1,0 +1,39 @@
+@model IEnumerable<PlayerData>
+
+@if (!Model.Any())
+{
+    <div class="text-center">
+        <p class="display-4">No Data Yet</p>
+    </div>
+}
+else
+{
+    <table class="table table-success">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Time</th>
+            <th>Name</th>
+            <th>xGeo</th>
+            <th>yGeo</th>
+            <th>Current State</th>
+            <th>Has Flag</th>
+        </tr>
+        </thead>
+        @{ var i = 1;}
+        @foreach (var data in Model)
+        {
+            <tr>
+                <th>@i</th>
+                <th>@data.TimeStamp</th>
+                <th>@data.Name</th>
+                <th>@data.XGeo</th>
+                <th>@data.YGeo</th>
+                <th>@data.CurrentState</th>
+                <th>@data.HasFlag</th>
+            </tr>
+            i++;
+        }
+    </table>
+}
+

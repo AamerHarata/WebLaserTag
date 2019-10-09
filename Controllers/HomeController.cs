@@ -32,6 +32,13 @@ namespace WebLaserTag.Controllers
             return View();
         }
 
+        public IActionResult DeleteData()
+        {
+            _context.RemoveRange(_context.PlayersData.ToList());
+            _context.SaveChanges();
+            return RedirectToAction(nameof(ReceiveData));
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

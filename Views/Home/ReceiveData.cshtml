@@ -6,8 +6,9 @@
 
 <div class="text-center">
     <h5 class="display-4">Live Data Receiver</h5>
+    <button class="btn btn-danger" onclick="location.href = '@Url.Action("DeleteData", "Home")'">Delete Everything</button>
 </div>
-
+<hr/>
 
 <div class="text-center" id="data-container">
     
@@ -20,7 +21,7 @@
         $(document).ready(function() {
 
 
-            setInterval(function() { getData() }, 500);
+            setInterval(function() { getData() }, 300);
 
 
             function getData() {

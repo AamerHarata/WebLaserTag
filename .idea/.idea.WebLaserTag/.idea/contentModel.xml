@@ -24,8 +24,8 @@
       <e p="docker-compose.yml" t="Include" />
       <e p="Dockerfile" t="Include" />
       <e p="Migrations" t="Include">
-        <e p="20191008133935_initialCreate.cs" t="Include" />
-        <e p="20191008133935_initialCreate.Designer.cs" t="Include" />
+        <e p="20191009104844_newModel.cs" t="Include" />
+        <e p="20191009104844_newModel.Designer.cs" t="Include" />
         <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
       </e>
       <e p="Models" t="Include">

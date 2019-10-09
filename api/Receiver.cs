@@ -14,9 +14,10 @@ namespace WebLaserTag.api
         }
 
         [Route("api/player/")]
-        public IActionResult PlayersData(string id, double xGeo, double yGeo)
+        public IActionResult PlayersData(string name, double xGeo, double yGeo, bool alive)
         {
-            return Ok();
+            var message = "Hello from the server, I got that from you: Name= "+name+", xGeo= "+xGeo+", yGeo= " + yGeo+ ", alive?= " + alive;
+            return Ok(message);
         }
     }
 }

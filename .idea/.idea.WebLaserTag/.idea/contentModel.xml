@@ -51,13 +51,16 @@
         <e p="_ViewStart.cshtml" t="Include" />
         <e p="Home" t="Include">
           <e p="Index.cshtml" t="Include" />
+          <e p="PlayerData.cshtml" t="Include" />
+          <e p="Players.cshtml" t="Include" />
           <e p="Privacy.cshtml" t="Include" />
-          <e p="ReceiveData.cshtml" t="Include" />
         </e>
         <e p="Shared" t="Include">
           <e p="_CookieConsentPartial.cshtml" t="Include" />
           <e p="_Layout.cshtml" t="Include" />
-          <e p="_LiveData.cshtml" t="Include" />
+          <e p="_LiveGame.cshtml" t="Include" />
+          <e p="_LivePlayer.cshtml" t="Include" />
+          <e p="_LivePlayersData.cshtml" t="Include" />
           <e p="_ValidationScriptsPartial.cshtml" t="Include" />
           <e p="Error.cshtml" t="Include" />
         </e>

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebLaserTag.Migrations
 {
-    public partial class newStartApis : Migration
+    public partial class liveDataVisualization : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -15,10 +15,12 @@ namespace WebLaserTag.Migrations
                     HostName = table.Column<string>(nullable: true),
                     Password = table.Column<int>(nullable: false),
                     Ended = table.Column<bool>(nullable: false),
+                    TimeStamp = table.Column<DateTime>(nullable: false),
                     StartX = table.Column<double>(nullable: false),
                     StartY = table.Column<double>(nullable: false),
                     FlagX = table.Column<double>(nullable: false),
-                    FlagY = table.Column<double>(nullable: false)
+                    FlagY = table.Column<double>(nullable: false),
+                    FlagHolder = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {

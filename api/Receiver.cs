@@ -31,7 +31,9 @@ namespace WebLaserTag.api
                 StartX = startX,
                 StartY = startY,
                 FlagX = startX,
-                FlagY = startY
+                FlagY = startY,
+                TimeStamp = DateTime.Now,
+                FlagHolder = "None"
             };
             
 

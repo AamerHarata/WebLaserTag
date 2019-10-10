@@ -23,6 +23,8 @@ namespace WebLaserTag.Migrations
 
                     b.Property<bool>("Ended");
 
+                    b.Property<string>("FlagHolder");
+
                     b.Property<double>("FlagX");
 
                     b.Property<double>("FlagY");
@@ -34,6 +36,8 @@ namespace WebLaserTag.Migrations
                     b.Property<double>("StartX");
 
                     b.Property<double>("StartY");
+
+                    b.Property<DateTime>("TimeStamp");
 
                     b.HasKey("Id");
 

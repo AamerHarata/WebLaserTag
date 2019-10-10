@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using WebLaserTag.Data;
 using WebLaserTag.Models;
 
@@ -22,13 +23,21 @@ namespace WebLaserTag.Controllers
             return View();
         }
 
-        public IActionResult Privacy()
+
+
+        public IActionResult PlayerData(string gameId)
         {
+            if (gameId == null)
+                return BadRequest("Game Id is null");
+            ViewBag.gameId = gameId;
             return View();
         }
 
-        public IActionResult ReceiveData()
+        public IActionResult Players(string gameId)
         {
+            if (gameId == null)
+                return BadRequest("Game Id is null");
+            ViewBag.gameId = gameId;
             return View();
         }
 
@@ -36,19 +45,56 @@ namespace WebLaserTag.Controllers
         {
             _context.RemoveRange(_context.PlayersData.ToList());
             _context.SaveChanges();
-            return RedirectToAction(nameof(ReceiveData));
+            return RedirectToAction(nameof(PlayerData));
         }
 
+
+
+        [Route("/LivePlayerData/")]
+        public IActionResult LivePlayerData(string gameId)
+        {
+            if (gameId == null)
+                return BadRequest("Game Id is null");
+            return PartialView("_LivePlayersData", _context.PlayersData.Include(x=>x.Player.Game).Where(x=>x.Player.GameId == gameId).OrderByDescending(x=>x.TimeStamp));
+        }
+        
+        [Route("/LivePlayer/")]
+        public IActionResult LivePlayer(string gameId)
+        {
+            if (gameId == null)
+                return BadRequest("Game Id is null");
+            return PartialView("_LivePlayer", _context.Players.Include(x=>x.Game).Where(x=>x.GameId == gameId).ToList());
+        }
+        
+        
+        [Route("/LiveGame/")]
+        public IActionResult LiveGame()
+        {
+            return PartialView("_LiveGame", _context.Games.OrderByDescending(x=>x.TimeStamp).ToList());
+        }
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        public IActionResult Privacy()
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {
             return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
-        }
-
-        [Route("/LiveData/")]
-        public IActionResult LiveData()
-        {
-            return PartialView("_LiveData", _context.PlayersData.OrderByDescending(x=>x.TimeStamp));
         }
     }
 }

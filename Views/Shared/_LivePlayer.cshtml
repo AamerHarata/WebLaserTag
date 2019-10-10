@@ -1,0 +1,36 @@
+@model IEnumerable<Player>
+
+@if (!Model.Any())
+{
+    <div class="text-center">
+        <p class="display-4" style="color: gray; font-size: 2.5rem;">No players joined Yet</p>
+    </div>
+}
+else
+{
+    <table class="table table-striped">
+        <thead>
+        <tr>
+            <th>#</th>
+            <th>Mac Address</th>
+            <th>Name</th>
+            <th>Status</th>
+            <th>Host</th>
+        </tr>
+        </thead>
+        @{ var i = 1;}
+        @foreach (var player in Model)
+        {
+            var host = player.Game.HostName == player.Name;
+            <tr>
+                <td>@i</td>
+                <td>@player.MacAddress</td>
+                <td>@player.Name</td>
+                <td>Joined</td>
+                <td>@host<td>
+            </tr>
+            i++;
+        }
+    </table>
+}
+

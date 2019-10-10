@@ -9,8 +9,8 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191010133211_newStartApis")]
-    partial class newStartApis
+    [Migration("20191010145438_liveDataVisualization")]
+    partial class liveDataVisualization
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -25,6 +25,8 @@ namespace WebLaserTag.Migrations
 
                     b.Property<bool>("Ended");
 
+                    b.Property<string>("FlagHolder");
+
                     b.Property<double>("FlagX");
 
                     b.Property<double>("FlagY");
@@ -36,6 +38,8 @@ namespace WebLaserTag.Migrations
                     b.Property<double>("StartX");
 
                     b.Property<double>("StartY");
+
+                    b.Property<DateTime>("TimeStamp");
 
                     b.HasKey("Id");
 

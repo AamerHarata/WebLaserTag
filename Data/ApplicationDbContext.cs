@@ -9,6 +9,8 @@ namespace WebLaserTag.Data
         {
         }
         
+        public DbSet<Game> Games { get; set; }
+        public DbSet<Player> Players { get; set; }
         public DbSet<PlayerData> PlayersData { get; set; }
     }
 }

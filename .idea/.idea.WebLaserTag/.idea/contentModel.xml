@@ -30,7 +30,10 @@
       </e>
       <e p="Models" t="Include">
         <e p="ErrorViewModel.cs" t="Include" />
+        <e p="Game.cs" t="Include" />
+        <e p="Player.cs" t="Include" />
         <e p="PlayerData.cs" t="Include" />
+        <e p="PlayerDataViewModel.cs" t="Include" />
       </e>
       <e p="obj" t="ExcludeRecursive">
         <e p="Debug" t="Include">

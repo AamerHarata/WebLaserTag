@@ -64,7 +64,7 @@ namespace WebLaserTag.api
             _context.Add(player);
             _context.SaveChanges();
 
-            var playerDate = new PlayerData {Player = player, XGeo = startX, YGeo = startY, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.MacAddress};
+            var playerDate = new PlayerData {Player = player, XGeo = startX, YGeo = startY, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.MacAddress , TimeStamp = DateTime.Now};
             _context.Add(playerDate);
             _context.SaveChanges();
 
@@ -155,7 +155,7 @@ namespace WebLaserTag.api
 
             if (playerData == null)
             {
-                var newPlayerData = new PlayerData{Player = player, XGeo = xGeo, YGeo = yGeo, HasFlag = hasFlag, CurrentState = currentState};
+                var newPlayerData = new PlayerData{Player = player, XGeo = xGeo, YGeo = yGeo, HasFlag = hasFlag, CurrentState = currentState, TimeStamp = DateTime.Now};
                 _context.Add(newPlayerData);
                 _context.SaveChanges();
                 return Ok();

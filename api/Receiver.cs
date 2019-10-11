@@ -64,6 +64,10 @@ namespace WebLaserTag.api
             _context.Add(player);
             _context.SaveChanges();
 
+            var playerDate = new PlayerData {Player = player, XGeo = startX, YGeo = startY, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.MacAddress};
+            _context.Add(playerDate);
+            _context.SaveChanges();
+
             var response = "Game Created -- ";
             return Ok(new {response, game});
         }
@@ -92,7 +96,7 @@ namespace WebLaserTag.api
                 return BadRequest("Wrong password, try again!");
             
             var player = new Player(){Game = game, MacAddress = macAddress, Name = playerName};
-            var playerData = new PlayerData(){Player = player, XGeo = xGeo, YGeo = yGeo, CurrentState = EnumList.State.START_ON_HOLD};
+            var playerData = new PlayerData(){Player = player, XGeo = xGeo, YGeo = yGeo, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.MacAddress};
 
             _context.Add(player);
             _context.SaveChanges();
@@ -144,7 +148,10 @@ namespace WebLaserTag.api
             if (game == null)
                 return NotFound("Game not found; Game Id is incorrect!");
 
+            //ToDo :: A bug here, the player data become always null
             var playerData = _context.PlayersData.Find(macAddress);
+            
+            //ToDo :: The same bug happened in the next line
 
             if (playerData == null)
             {

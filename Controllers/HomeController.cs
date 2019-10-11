@@ -41,13 +41,7 @@ namespace WebLaserTag.Controllers
             return View();
         }
 
-        public IActionResult DeleteData()
-        {
-            _context.RemoveRange(_context.PlayersData.ToList());
-            _context.SaveChanges();
-            return RedirectToAction(nameof(PlayerData));
-        }
-
+        
 
 
         [Route("/LivePlayerData/")]
@@ -71,6 +65,38 @@ namespace WebLaserTag.Controllers
         public IActionResult LiveGame()
         {
             return PartialView("_LiveGame", _context.Games.OrderByDescending(x=>x.TimeStamp).ToList());
+        }
+
+
+        public IActionResult DeleteGame(string gameId)
+        {
+            var game = _context.Games.Find(gameId);
+            if (game == null)
+                return BadRequest("Game not found");
+
+            var players = _context.Players.Include(x => x.Game).Where(x => x.GameId == gameId).ToList();
+            
+            var playersData = new List<PlayerData>();
+            foreach (var player in players)
+            {
+                playersData.Add(_context.PlayersData.Include(x=>x.Player).SingleOrDefault(x => x.PlayerMacAddress == player.MacAddress));
+            }
+
+            _context.Remove(game);
+            _context.RemoveRange(players);
+            _context.RemoveRange(playersData);
+            _context.SaveChanges();
+            
+
+            return RedirectToAction(nameof(Index));
+        }
+        
+        public IActionResult DeleteData()
+        {
+            _context.RemoveRange(_context.Games.ToList());
+            _context.RemoveRange(_context.PlayersData.ToList());
+            _context.SaveChanges();
+            return RedirectToAction(nameof(PlayerData));
         }
         
         

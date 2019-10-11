@@ -9,8 +9,8 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191011070300_updatePlayerData")]
-    partial class updatePlayerData
+    [Migration("20191011093806_DeleteData")]
+    partial class DeleteData
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {

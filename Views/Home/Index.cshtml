@@ -1,4 +1,5 @@
-﻿
+﻿@using WebLaserTag.Migrations
+
 @{
     ViewData["Title"] = "Home Page";
 }
@@ -9,7 +10,7 @@
     <div class="display-4" style="color: gray; font-size: 2.5rem"><p>The server is ready to receive data</p></div>
 </div>
 <hr/>
-<div class="text-center"><button class="text-center btn btn-danger">Delete Everything</button></div>
+<div class="text-center"><button class="text-center btn btn-danger"onclick="location.href = '@Url.Action("DeleteData", "Home")'">Delete Everything</button></div>
 <br/>
 <div class="text-center" id="data-container">
     

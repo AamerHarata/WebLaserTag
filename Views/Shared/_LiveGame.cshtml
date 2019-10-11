@@ -45,7 +45,7 @@
                     <td>@game.Password</td>
                     <td><button class="btn btn-info" onclick="window.open('/home/players?gameId=@game.Id')">Players</button></td>
                     <td><button class="btn btn-dark" onclick="window.open('/home/PlayerData?gameId=@game.Id')">Live Data</button></td>
-                    <td><button class="btn btn-danger" onclick="location.href = '@Url.Action("PlayerData", "Home", new{gameId = game.Id})'">Delete</button></td>
+                    <td><button class="btn btn-danger" onclick="location.href = '@Url.Action("DeleteGame", "Home", new{gameId = game.Id})'">Delete</button></td>
                 </tr>
                 i++;
             }

@@ -96,7 +96,7 @@ namespace WebLaserTag.Controllers
             _context.RemoveRange(_context.Games.ToList());
             _context.RemoveRange(_context.PlayersData.ToList());
             _context.SaveChanges();
-            return RedirectToAction(nameof(PlayerData));
+            return RedirectToAction(nameof(Index));
         }
         
         

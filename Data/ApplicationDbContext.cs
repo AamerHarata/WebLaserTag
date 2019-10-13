@@ -17,8 +17,8 @@ namespace WebLaserTag.Data
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-//            builder.Entity<PlayerData>()
-//                .HasKey(s => new {s.Player.MacAddress});
+            builder.Entity<Player>()
+                .HasKey(s => new {s.MacAddress, s.GameId});
             
 
 

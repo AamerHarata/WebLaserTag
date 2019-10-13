@@ -6,6 +6,7 @@ namespace WebLaserTag.Models
     public class Game
     {
         public string Id { get; set; }
+        public string Name { get; set; } // ToDo :: Use this name to show instead of game id 
         public string HostName { get; set; }
         public int Password { get; set; }
         public bool Ended { get; set; }

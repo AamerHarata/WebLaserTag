@@ -68,8 +68,7 @@ namespace WebLaserTag.api
             _context.Add(playerDate);
             _context.SaveChanges();
 
-            var response = "Game Created -- ";
-            return Ok(new {response, game});
+            return Ok( game);
         }
 
         [Route("api/SearchGames")]

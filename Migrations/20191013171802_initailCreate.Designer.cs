@@ -9,8 +9,8 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191011093806_DeleteData")]
-    partial class DeleteData
+    [Migration("20191013171802_initailCreate")]
+    partial class initailCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -33,6 +33,8 @@ namespace WebLaserTag.Migrations
 
                     b.Property<string>("HostName");
 
+                    b.Property<string>("Name");
+
                     b.Property<int>("Password");
 
                     b.Property<double>("StartX");
@@ -48,14 +50,13 @@ namespace WebLaserTag.Migrations
 
             modelBuilder.Entity("WebLaserTag.Models.Player", b =>
                 {
-                    b.Property<string>("MacAddress")
-                        .ValueGeneratedOnAdd();
+                    b.Property<string>("MacAddress");
 
                     b.Property<string>("GameId");
 
                     b.Property<string>("Name");
 
-                    b.HasKey("MacAddress");
+                    b.HasKey("MacAddress", "GameId");
 
                     b.HasIndex("GameId");
 
@@ -71,6 +72,8 @@ namespace WebLaserTag.Migrations
 
                     b.Property<bool>("HasFlag");
 
+                    b.Property<string>("PlayerGameId");
+
                     b.Property<string>("PlayerMacAddress1");
 
                     b.Property<DateTime>("TimeStamp");
@@ -81,7 +84,7 @@ namespace WebLaserTag.Migrations
 
                     b.HasKey("PlayerMacAddress");
 
-                    b.HasIndex("PlayerMacAddress1");
+                    b.HasIndex("PlayerMacAddress1", "PlayerGameId");
 
                     b.ToTable("PlayersData");
                 });
@@ -90,14 +93,15 @@ namespace WebLaserTag.Migrations
                 {
                     b.HasOne("WebLaserTag.Models.Game", "Game")
                         .WithMany()
-                        .HasForeignKey("GameId");
+                        .HasForeignKey("GameId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 
             modelBuilder.Entity("WebLaserTag.Models.PlayerData", b =>
                 {
                     b.HasOne("WebLaserTag.Models.Player", "Player")
                         .WithMany()
-                        .HasForeignKey("PlayerMacAddress1");
+                        .HasForeignKey("PlayerMacAddress1", "PlayerGameId");
                 });
 #pragma warning restore 612, 618
         }

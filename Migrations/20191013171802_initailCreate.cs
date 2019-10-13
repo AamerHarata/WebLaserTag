@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebLaserTag.Migrations
 {
-    public partial class DeleteData : Migration
+    public partial class initailCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -12,6 +12,7 @@ namespace WebLaserTag.Migrations
                 columns: table => new
                 {
                     Id = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true),
                     HostName = table.Column<string>(nullable: true),
                     Password = table.Column<int>(nullable: false),
                     Ended = table.Column<bool>(nullable: false),
@@ -32,18 +33,18 @@ namespace WebLaserTag.Migrations
                 columns: table => new
                 {
                     MacAddress = table.Column<string>(nullable: false),
-                    Name = table.Column<string>(nullable: true),
-                    GameId = table.Column<string>(nullable: true)
+                    GameId = table.Column<string>(nullable: false),
+                    Name = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Players", x => x.MacAddress);
+                    table.PrimaryKey("PK_Players", x => new { x.MacAddress, x.GameId });
                     table.ForeignKey(
                         name: "FK_Players_Games_GameId",
                         column: x => x.GameId,
                         principalTable: "Games",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -56,16 +57,17 @@ namespace WebLaserTag.Migrations
                     TimeStamp = table.Column<DateTime>(nullable: false),
                     CurrentState = table.Column<int>(nullable: false),
                     HasFlag = table.Column<bool>(nullable: false),
-                    PlayerMacAddress1 = table.Column<string>(nullable: true)
+                    PlayerMacAddress1 = table.Column<string>(nullable: true),
+                    PlayerGameId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PlayersData", x => x.PlayerMacAddress);
                     table.ForeignKey(
-                        name: "FK_PlayersData_Players_PlayerMacAddress1",
-                        column: x => x.PlayerMacAddress1,
+                        name: "FK_PlayersData_Players_PlayerMacAddress1_PlayerGameId",
+                        columns: x => new { x.PlayerMacAddress1, x.PlayerGameId },
                         principalTable: "Players",
-                        principalColumn: "MacAddress",
+                        principalColumns: new[] { "MacAddress", "GameId" },
                         onDelete: ReferentialAction.Restrict);
                 });
 
@@ -75,9 +77,9 @@ namespace WebLaserTag.Migrations
                 column: "GameId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_PlayersData_PlayerMacAddress1",
+                name: "IX_PlayersData_PlayerMacAddress1_PlayerGameId",
                 table: "PlayersData",
-                column: "PlayerMacAddress1");
+                columns: new[] { "PlayerMacAddress1", "PlayerGameId" });
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

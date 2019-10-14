@@ -22,11 +22,17 @@ namespace WebLaserTag.api
         
 
         [Route("api/CreateGame/")]
-        public IActionResult CreateGame(string hostId, string playerName, double startX, double startY, int password)
+        public IActionResult CreateGame(string hostId, double startX, double startY, string password)
         {
+
+            var player = _context.Players.Find(hostId);
+            if (player == null)
+                return NotFound("Player not found, check player id");
+            
+            
             var game = new Game
             {
-                HostName = playerName,
+                Host = player,
                 Password = password,
                 StartX = startX,
                 StartY = startY,
@@ -37,72 +43,70 @@ namespace WebLaserTag.api
             };
             
 
-            //ToDo :: Use this code to delete the game once it's ended
-//            var oldGames = _context.Games.Where(x=>x.Ended).ToList();
-//            if (oldGames.Any())
-//            {
-//                foreach (var oldGame in oldGames)
-//                {
-//                    var oldPlayers = _context.Players.Include(x => x.Game).Where(x => x.Game == oldGame).ToList();
-//                    foreach (var oldPlayer in oldPlayers)
-//                    {
-//                        _context.RemoveRange(_context.PlayersData.Include(x=>x.Player).Where(x=>x.Player == oldPlayer));
-//                        _context.Remove(oldPlayer);
-//                        _context.Remove(oldGame);
-//                        _context.SaveChanges();
-//                    }
-//                }
-//            }
-
             //ToDo :: Make it random inside the map range;
             //ToDo :: Make it random inside the map range;
 
             _context.Add(game);
             _context.SaveChanges();
-            
-            var player = new Player{Id = hostId, Name = playerName, Game = game};
-            _context.Add(player);
+
+            game.Name = player.Name + "-" + game.Id.Split("-")[0];
+            _context.Update(game);
             _context.SaveChanges();
 
-            var playerDate = new PlayerData {Player = player, XGeo = startX, YGeo = startY, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.Id , TimeStamp = DateTime.Now};
-            _context.Add(playerDate);
+
+            _context.Add(new PlayerInGame {Game = game, Player = player, JoinTime = DateTime.Now, Host = true});
             _context.SaveChanges();
 
-            return Ok( game);
+            return Ok(game);
         }
 
         [Route("api/SearchGames")]
         public IActionResult SearchGames()
         {
-            var games = _context.Games.Where(x => !x.Ended).ToList();
+            var games = _context.Games.Include(x=>x.Host).Where(x => !x.Ended).ToList();
             if (games.Any())
                 return Ok(games);
             return NotFound("No games -- You can start new one and invite your friends to play");
         }
 
-        [Route("api/NewPlayer")]
-        public IActionResult NewPlayer(string gameId, string playerId, string playerName, int password, double xGeo, double yGeo)
+        [Route("api/JoinGame")]
+        public IActionResult JoinGame(string gameId, string playerId, string password)
         {
             var game = _context.Games.Find(gameId);
             if (game == null)
                 return NotFound("Game not found");
 
-            var players = _context.Players.Include(x => x.Game).ToList();
-            if (players.Any(x => x.Game == game && x.Id == playerId))
+            var player = _context.Players.Find(playerId);
+            if (player == null)
+                return NotFound("Player not found");
+
+            var playerInGame = _context.PlayersInGame.Include(x => x.Game).Include(x => x.Player)
+                .Where(x => x.GameId == gameId).Any(x => x.PlayerId == playerId);
+            if (playerInGame)
                 return Ok("You are already in the game");
             
             if (password != game.Password)
                 return BadRequest("Wrong password, try again!");
-            
-            var player = new Player(){Game = game, Id = playerId, Name = playerName};
-            var playerData = new PlayerData(){Player = player, XGeo = xGeo, YGeo = yGeo, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.Id};
 
-            _context.Add(player);
-            _context.SaveChanges();
-            _context.Add(playerData);
+            var playerJoin = new PlayerInGame {Game = game, Player = player, JoinTime = DateTime.Now};
+            _context.Add(playerJoin);
             _context.SaveChanges();
             
             return Ok("Game Joined -- you will be on hold while the other players join");
+        }
+
+        [Route("api/NewPlayer")]
+        public IActionResult NewPlayer(string playerId, string name)
+        {
+            var checkPlayer = _context.Players.Find(playerId);
+            if (checkPlayer != null)
+                return BadRequest("Player Id Already Exist!");
+
+            var player = new Player {Id = playerId, Name = name};
+            _context.Add(player);
+            _context.SaveChanges();
+
+            return Ok(player);
         }
 
         [Route("api/AwaitPlayers")]
@@ -115,14 +119,18 @@ namespace WebLaserTag.api
                 return Ok(new {EnumList.Signal.IN});
             }
 
-            var players = _context.Players.Include(x => x.Game).Where(x => x.GameId == gameId).ToList();
-            var msg = "We are still waiting players, Now we have: "+players.Count+" players joined";
+            var playersInGame = _context.PlayersInGame.Include(x=>x.Player).Include(x => x.Game).Where(x => x.GameId == gameId).ToList();
             
-            
-            if(!players.Any())
+            if(!playersInGame.Any())
                 return NotFound("No players joined yet");
+
+            var players = new List<Player>();
+            foreach (var player in playersInGame)
+            {
+                players.Add(player.Player);
+            }
             
-            return  Ok(new {msg, players, EnumList.Signal.WAIT});
+            return  Ok(new {players, EnumList.Signal.WAIT});
         }
         
         
@@ -169,14 +177,14 @@ namespace WebLaserTag.api
             _context.SaveChanges();
 
 
-            var playersData = _context.PlayersData.Include(x=>x.Player).Include(x=>x.Player.Game).Where(x=>x.Player.Game == game).ToList();
+//            var playersData = _context.PlayersData.Include(x=>x.Player).Include(x=>x.Player.Game).Where(x=>x.Player.Game == game).ToList();
             
             var playersModel = new List<PlayerDataViewModel>();
 
-            foreach (var data in playersData)
-            {
-                playersModel.Add(new PlayerDataViewModel{MacAddress = data.Player.Id, Name = data.Player.Name, XGeo = data.XGeo, YGeo = data.YGeo, HasFlag = data.HasFlag,CurrentState = data.CurrentState, GivenSignal = EnumList.Signal.NONE});
-            }
+//            foreach (var data in playersData)
+//            {
+//                playersModel.Add(new PlayerDataViewModel{MacAddress = data.Player.Id, Name = data.Player.Name, XGeo = data.XGeo, YGeo = data.YGeo, HasFlag = data.HasFlag,CurrentState = data.CurrentState, GivenSignal = EnumList.Signal.NONE});
+//            }
             
             return Ok(playersModel);
         }

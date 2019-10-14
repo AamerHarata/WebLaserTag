@@ -7,12 +7,10 @@ namespace WebLaserTag.Models
 {
     public class PlayerData
     {
-//        [Key]
-//        public string MacAddress { get; set; }
+
         [Required]
         [Key]
-        [ForeignKey("PlayerMacAddress")]
-        public string PlayerMacAddress { get; set; }
+        public string PlayerId { get; set; }
         public double XGeo { get; set; }
         public double YGeo { get; set; }
         public DateTime TimeStamp { get; set; }

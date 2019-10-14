@@ -49,7 +49,8 @@ namespace WebLaserTag.Controllers
         {
             if (gameId == null)
                 return BadRequest("Game Id is null");
-            return PartialView("_LivePlayersData", _context.PlayersData.Include(x=>x.Player.Game).Where(x=>x.Player.GameId == gameId).OrderByDescending(x=>x.TimeStamp));
+//            return PartialView("_LivePlayersData", _context.PlayersData.Include(x=>x.Player.Game).Where(x=>x.Player.GameId == gameId).OrderByDescending(x=>x.TimeStamp));
+            return Ok();
         }
         
         [Route("/LivePlayer/")]
@@ -57,14 +58,15 @@ namespace WebLaserTag.Controllers
         {
             if (gameId == null)
                 return BadRequest("Game Id is null");
-            return PartialView("_LivePlayer", _context.Players.Include(x=>x.Game).Where(x=>x.GameId == gameId).ToList());
+            return PartialView("_LivePlayer", _context.PlayersInGame.Include(x=>x.Player).Where(x=>x.GameId == gameId).ToList());
+            return Ok();
         }
         
         
         [Route("/LiveGame/")]
         public IActionResult LiveGame()
         {
-            return PartialView("_LiveGame", _context.Games.OrderByDescending(x=>x.TimeStamp).ToList());
+            return PartialView("_LiveGame", _context.Games.Include(x=>x.Host).OrderByDescending(x=>x.TimeStamp).ToList());
         }
 
 
@@ -74,17 +76,11 @@ namespace WebLaserTag.Controllers
             if (game == null)
                 return BadRequest("Game not found");
 
-            var players = _context.Players.Include(x => x.Game).Where(x => x.GameId == gameId).ToList();
+            var players = _context.PlayersInGame.Include(x => x.Game).Where(x => x.GameId == game.Id).ToList();
             
-            var playersData = new List<PlayerData>();
-            foreach (var player in players)
-            {
-                playersData.Add(_context.PlayersData.Include(x=>x.Player).SingleOrDefault(x => x.PlayerMacAddress == player.Id));
-            }
-
-            _context.Remove(game);
             _context.RemoveRange(players);
-            _context.RemoveRange(playersData);
+            _context.SaveChanges();
+            _context.Remove(game);
             _context.SaveChanges();
             
 

@@ -1,4 +1,4 @@
-@model IEnumerable<Player>
+@model IEnumerable<PlayerInGame>
 
 @if (!Model.Any())
 {
@@ -19,15 +19,14 @@ else
         </tr>
         </thead>
         @{ var i = 1;}
-        @foreach (var player in Model)
+        @foreach (var playerInGame in Model)
         {
-            var host = player.Game.HostName == player.Name;
             <tr>
                 <td>@i</td>
-                <td>@player.Id</td>
-                <td>@player.Name</td>
+                <td>@playerInGame.PlayerId</td>
+                <td>@playerInGame.Player.Name</td>
                 <td>Joined</td>
-                <td>@host<td>
+                <td>@playerInGame.Host<td>
             </tr>
             i++;
         }

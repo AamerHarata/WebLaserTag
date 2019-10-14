@@ -12,13 +12,14 @@ namespace WebLaserTag.Data
         public DbSet<Game> Games { get; set; }
         public DbSet<Player> Players { get; set; }
         public DbSet<PlayerData> PlayersData { get; set; }
+        public DbSet<PlayerInGame> PlayersInGame { get; set; }
         
         
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
-            builder.Entity<Player>()
-                .HasKey(s => new {MacAddress = s.Id, s.GameId});
+            builder.Entity<PlayerInGame>()
+                .HasKey(s => new {s.PlayerId, s.GameId});
             
 
 

@@ -22,7 +22,7 @@ namespace WebLaserTag.api
         
 
         [Route("api/CreateGame/")]
-        public IActionResult CreateGame(string macAddress, string playerName, double startX, double startY, int password)
+        public IActionResult CreateGame(string hostId, string playerName, double startX, double startY, int password)
         {
             var game = new Game
             {
@@ -60,11 +60,11 @@ namespace WebLaserTag.api
             _context.Add(game);
             _context.SaveChanges();
             
-            var player = new Player{MacAddress = macAddress, Name = playerName, Game = game};
+            var player = new Player{Id = hostId, Name = playerName, Game = game};
             _context.Add(player);
             _context.SaveChanges();
 
-            var playerDate = new PlayerData {Player = player, XGeo = startX, YGeo = startY, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.MacAddress , TimeStamp = DateTime.Now};
+            var playerDate = new PlayerData {Player = player, XGeo = startX, YGeo = startY, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.Id , TimeStamp = DateTime.Now};
             _context.Add(playerDate);
             _context.SaveChanges();
 
@@ -81,21 +81,21 @@ namespace WebLaserTag.api
         }
 
         [Route("api/NewPlayer")]
-        public IActionResult NewPlayer(string gameId, string macAddress, string playerName, int password, double xGeo, double yGeo)
+        public IActionResult NewPlayer(string gameId, string playerId, string playerName, int password, double xGeo, double yGeo)
         {
             var game = _context.Games.Find(gameId);
             if (game == null)
                 return NotFound("Game not found");
 
             var players = _context.Players.Include(x => x.Game).ToList();
-            if (players.Any(x => x.Game == game && x.MacAddress == macAddress))
+            if (players.Any(x => x.Game == game && x.Id == playerId))
                 return Ok("You are already in the game");
             
             if (password != game.Password)
                 return BadRequest("Wrong password, try again!");
             
-            var player = new Player(){Game = game, MacAddress = macAddress, Name = playerName};
-            var playerData = new PlayerData(){Player = player, XGeo = xGeo, YGeo = yGeo, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.MacAddress};
+            var player = new Player(){Game = game, Id = playerId, Name = playerName};
+            var playerData = new PlayerData(){Player = player, XGeo = xGeo, YGeo = yGeo, CurrentState = EnumList.State.START_ON_HOLD, PlayerMacAddress = player.Id};
 
             _context.Add(player);
             _context.SaveChanges();
@@ -130,25 +130,25 @@ namespace WebLaserTag.api
         
         
         [Route("api/playerData/")]
-        public IActionResult PlayersData(string gameId, string macAddress, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState)
+        public IActionResult PlayersData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState)
         {
-            if (macAddress == null)
-                return BadRequest("Mac Address is null");
+            if (playerId == null)
+                return BadRequest("playerId Address is null");
             
-            var player = _context.Players.Find(macAddress);
+            var player = _context.Players.Find(playerId);
             
             if (player == null)
-                return NotFound("Player not found; or the Mac Address is wrong!");
+                return NotFound("Player not found; or the playerId is wrong!");
             
             if (gameId == null)
-                return BadRequest("Mac Address is null");
+                return BadRequest("gameId is null");
             
             var game = _context.Games.Find(gameId);
             if (game == null)
                 return NotFound("Game not found; Game Id is incorrect!");
 
             //ToDo :: A bug here, the player data become always null
-            var playerData = _context.PlayersData.Find(macAddress);
+            var playerData = _context.PlayersData.Find(playerId);
             
             //ToDo :: The same bug happened in the next line
 
@@ -175,7 +175,7 @@ namespace WebLaserTag.api
 
             foreach (var data in playersData)
             {
-                playersModel.Add(new PlayerDataViewModel{MacAddress = data.Player.MacAddress, Name = data.Player.Name, XGeo = data.XGeo, YGeo = data.YGeo, HasFlag = data.HasFlag,CurrentState = data.CurrentState, GivenSignal = EnumList.Signal.NONE});
+                playersModel.Add(new PlayerDataViewModel{MacAddress = data.Player.Id, Name = data.Player.Name, XGeo = data.XGeo, YGeo = data.YGeo, HasFlag = data.HasFlag,CurrentState = data.CurrentState, GivenSignal = EnumList.Signal.NONE});
             }
             
             return Ok(playersModel);

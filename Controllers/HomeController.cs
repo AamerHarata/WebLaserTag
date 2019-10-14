@@ -79,7 +79,7 @@ namespace WebLaserTag.Controllers
             var playersData = new List<PlayerData>();
             foreach (var player in players)
             {
-                playersData.Add(_context.PlayersData.Include(x=>x.Player).SingleOrDefault(x => x.PlayerMacAddress == player.MacAddress));
+                playersData.Add(_context.PlayersData.Include(x=>x.Player).SingleOrDefault(x => x.PlayerMacAddress == player.Id));
             }
 
             _context.Remove(game);

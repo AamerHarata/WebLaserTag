@@ -18,7 +18,7 @@ namespace WebLaserTag.Data
         {
             base.OnModelCreating(builder);
             builder.Entity<Player>()
-                .HasKey(s => new {s.MacAddress, s.GameId});
+                .HasKey(s => new {MacAddress = s.Id, s.GameId});
             
 
 

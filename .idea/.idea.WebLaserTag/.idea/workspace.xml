@@ -4,15 +4,9 @@
     <list default="true" id="fe2e0287-0536-4a8f-bc28-45f42573ffac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20191015081511_initialCreate.Designer.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/20191015081511_initialCreate.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Models/PlayerInGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/PlayerInGame.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.assets.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.csproj.CoreCompileInputs.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.csproj.CoreCompileInputs.cache" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.dll" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.pdb" afterDir="false" />
@@ -55,10 +49,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="703">
+            <state relative-caret-position="2261">
               <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
               <folding>
                 <marker date="1571122558392" expanded="false" signature="6:213" ph="..." />
@@ -174,7 +168,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data/ApplicationDbInitializer.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="150">
@@ -301,6 +295,11 @@
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="WebLaserTag" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="api" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="WebLaserTag" type="24d0babc:SolutionExplorerModelNode" />
               <item name="Data" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
@@ -370,12 +369,12 @@
       <workItem from="1570972639130" duration="5634000" />
       <workItem from="1571041909763" duration="9979000" />
       <workItem from="1571084049448" duration="4322000" />
-      <workItem from="1571117483765" duration="7152000" />
+      <workItem from="1571117483765" duration="9310000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="69095000" />
+    <option name="totallyTimeSpent" value="71253000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -389,14 +388,14 @@
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1719" height="932" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.20865905" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20865905" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
       <window_info id="Favorites" order="4" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.13449565" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.13449565" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3599004" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -787,33 +786,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="703">
-          <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
-          <folding>
-            <marker date="1571122558392" expanded="false" signature="6:213" ph="..." />
-            <marker date="1571122558392" expanded="true" signature="240:7690" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="305:7688" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="422:474" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="622:1683" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="860:1151" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
-            <marker date="1571122558392" expanded="true" signature="1762:2032" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="2152:3362" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="3465:3947" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="4050:4954" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="4798:4870" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="5187:7583" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="5853:6258" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="5928:6144" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="6275:6571" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="6888:7486" ph="{...}" />
-            <marker date="1571122558392" expanded="true" signature="7141:7470" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Models/PlayerDataViewModel.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="90">
@@ -884,6 +856,33 @@
             <marker date="1570541651085" expanded="true" signature="115:504" ph="{...}" />
             <marker date="1570541651085" expanded="true" signature="209:498" ph="{...}" />
             <marker date="1570541651085" expanded="true" signature="251:347" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2261">
+          <caret line="166" column="34" selection-start-line="166" selection-start-column="34" selection-end-line="166" selection-end-column="34" />
+          <folding>
+            <marker date="1571122558392" expanded="false" signature="6:213" ph="..." />
+            <marker date="1571122558392" expanded="true" signature="240:7690" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="305:7688" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="422:474" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="622:1683" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="860:1151" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
+            <marker date="1571122558392" expanded="true" signature="1762:2032" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="2152:3362" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="3465:3947" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="4050:4954" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="4798:4870" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="5187:7583" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="5853:6258" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="5928:6144" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="6275:6571" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="6888:7486" ph="{...}" />
+            <marker date="1571122558392" expanded="true" signature="7141:7470" ph="{...}" />
           </folding>
         </state>
       </provider>

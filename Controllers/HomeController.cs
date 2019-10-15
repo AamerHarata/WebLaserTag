@@ -49,8 +49,23 @@ namespace WebLaserTag.Controllers
         {
             if (gameId == null)
                 return BadRequest("Game Id is null");
-//            return PartialView("_LivePlayersData", _context.PlayersData.Include(x=>x.Player.Game).Where(x=>x.Player.GameId == gameId).OrderByDescending(x=>x.TimeStamp));
-            return Ok();
+
+            var game = _context.Games.Find(gameId);
+            if (game == null)
+                return BadRequest("Game not found");
+
+            var playersInGame = from x in _context.PlayersInGame.Include(x => x.Game).ToList()
+                where x.GameId == gameId
+                select x.PlayerId;
+
+            var allPlayersData = _context.PlayersData.Include(x => x.Player).ToList();
+            
+            var playerData = new List<PlayerData>();
+
+            foreach (var player in allPlayersData)
+                playerData.Add(player);
+            
+            return PartialView("_LivePlayersData", playerData);
         }
         
         [Route("/LivePlayer/")]
@@ -59,7 +74,6 @@ namespace WebLaserTag.Controllers
             if (gameId == null)
                 return BadRequest("Game Id is null");
             return PartialView("_LivePlayer", _context.PlayersInGame.Include(x=>x.Player).Where(x=>x.GameId == gameId).ToList());
-            return Ok();
         }
         
         

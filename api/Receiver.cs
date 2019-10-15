@@ -56,7 +56,11 @@ namespace WebLaserTag.api
 
             _context.Add(new PlayerInGame {PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now, Host = true});
             _context.SaveChanges();
-
+            
+            var playerData = new PlayerData {PlayerId = player.Id, Player = player, CurrentState = EnumList.State.NONE, TimeStamp = DateTime.Now};
+            _context.Add(playerData);
+            _context.SaveChanges();
+            
             return Ok(game);
         }
 
@@ -89,7 +93,7 @@ namespace WebLaserTag.api
                 return BadRequest("Wrong password, try again!");
 
             var playerJoin = new PlayerInGame {PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now};
-            var playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.NONE};
+            var playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.NONE, TimeStamp = DateTime.Now};
             
             _context.Add(playerJoin);
             _context.SaveChanges();

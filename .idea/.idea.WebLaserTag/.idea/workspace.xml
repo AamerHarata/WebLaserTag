@@ -2,9 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe2e0287-0536-4a8f-bc28-45f42573ffac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/Migrations/20191014152900_initialCreate.Designer.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/20191014152900_initialCreate.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Migrations/ApplicationDbContextModelSnapshot.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Data/ApplicationDbContext.cs" afterDir="false" />
@@ -367,12 +364,12 @@
       <workItem from="1570972639130" duration="5634000" />
       <workItem from="1571041909763" duration="9979000" />
       <workItem from="1571084049448" duration="4322000" />
-      <workItem from="1571117483765" duration="6251000" />
+      <workItem from="1571117483765" duration="6553000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="68194000" />
+    <option name="totallyTimeSpent" value="68496000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">

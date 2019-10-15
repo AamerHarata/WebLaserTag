@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebLaserTag.Migrations
 {
-    public partial class InitalCreate : Migration
+    public partial class initialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

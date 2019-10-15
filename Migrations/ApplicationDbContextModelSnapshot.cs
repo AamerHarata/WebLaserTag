@@ -97,9 +97,15 @@ namespace WebLaserTag.Migrations
 
                     b.Property<DateTime>("JoinTime");
 
+                    b.Property<string>("PlayerId1");
+
                     b.HasKey("PlayerId", "GameId");
 
+                    b.HasAlternateKey("PlayerId");
+
                     b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId1");
 
                     b.ToTable("PlayersInGame");
                 });
@@ -127,8 +133,7 @@ namespace WebLaserTag.Migrations
 
                     b.HasOne("WebLaserTag.Models.Player", "Player")
                         .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PlayerId1");
                 });
 #pragma warning restore 612, 618
         }

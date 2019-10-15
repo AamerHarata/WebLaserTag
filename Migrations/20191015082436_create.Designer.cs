@@ -10,8 +10,8 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191015081511_initialCreate")]
-    partial class initialCreate
+    [Migration("20191015082436_create")]
+    partial class create
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -99,9 +99,15 @@ namespace WebLaserTag.Migrations
 
                     b.Property<DateTime>("JoinTime");
 
+                    b.Property<string>("PlayerId1");
+
                     b.HasKey("PlayerId", "GameId");
 
+                    b.HasAlternateKey("PlayerId");
+
                     b.HasIndex("GameId");
+
+                    b.HasIndex("PlayerId1");
 
                     b.ToTable("PlayersInGame");
                 });
@@ -129,8 +135,7 @@ namespace WebLaserTag.Migrations
 
                     b.HasOne("WebLaserTag.Models.Player", "Player")
                         .WithMany()
-                        .HasForeignKey("PlayerId")
-                        .OnDelete(DeleteBehavior.Cascade);
+                        .HasForeignKey("PlayerId1");
                 });
 #pragma warning restore 612, 618
         }

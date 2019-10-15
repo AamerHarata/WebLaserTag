@@ -4,7 +4,7 @@ namespace WebLaserTag.Models
 {
     public class PlayerDataViewModel
     {
-        public string MacAddress { get; set; }
+        public string Id { get; set; }
         public string Name { get; set; }
         public double XGeo { get; set; }
         public double YGeo { get; set; }

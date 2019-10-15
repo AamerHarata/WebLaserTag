@@ -27,7 +27,7 @@ namespace WebLaserTag.api
 
             var player = _context.Players.Find(hostId);
             if (player == null)
-                return NotFound("Player not found, check player id");
+                return NotFound("Player not found, check host id");
             
             
             var game = new Game
@@ -74,11 +74,11 @@ namespace WebLaserTag.api
         {
             var game = _context.Games.Find(gameId);
             if (game == null)
-                return NotFound("Game not found");
+                return NotFound("Game not found / wrong game Id");
 
             var player = _context.Players.Find(playerId);
             if (player == null)
-                return NotFound("Player not found");
+                return NotFound("Player not found / wrong player Id");
 
             var playerInGame = _context.PlayersInGame.Include(x => x.Game).Include(x => x.Player)
                 .Where(x => x.GameId == gameId).Any(x => x.PlayerId == playerId);
@@ -89,7 +89,12 @@ namespace WebLaserTag.api
                 return BadRequest("Wrong password, try again!");
 
             var playerJoin = new PlayerInGame {Game = game, Player = player, JoinTime = DateTime.Now};
+            var playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.NONE};
+            
             _context.Add(playerJoin);
+            _context.SaveChanges();
+
+            _context.Add(playerData);
             _context.SaveChanges();
             
             return Ok("Game Joined -- you will be on hold while the other players join");
@@ -98,26 +103,34 @@ namespace WebLaserTag.api
         [Route("api/NewPlayer")]
         public IActionResult NewPlayer(string playerId, string name)
         {
+            if (string.IsNullOrEmpty(playerId))
+                return BadRequest("Player Id is null");
             var checkPlayer = _context.Players.Find(playerId);
             if (checkPlayer != null)
-                return BadRequest("Player Id Already Exist!");
+                return BadRequest("Player Id Already Exists!");
 
             var player = new Player {Id = playerId, Name = name};
+            
             _context.Add(player);
             _context.SaveChanges();
-
+            
             return Ok(player);
         }
 
         [Route("api/AwaitPlayers")]
         public IActionResult AwaitPlayers(string gameId, bool go)
         {
+
+            if (string.IsNullOrEmpty(gameId))
+                return BadRequest("game Id is null");
             
+            var game = _context.Games.Find(gameId);
+            if (game == null)
+                return NotFound("No games found");
+            
+            var signal = EnumList.Signal.WAIT.ToString();
             if (go)
-            {
-                
-                return Ok(new {EnumList.Signal.IN});
-            }
+                signal = EnumList.Signal.IN.ToString();
 
             var playersInGame = _context.PlayersInGame.Include(x=>x.Player).Include(x => x.Game).Where(x => x.GameId == gameId).ToList();
             
@@ -129,16 +142,18 @@ namespace WebLaserTag.api
             {
                 players.Add(player.Player);
             }
+
             
-            return  Ok(new {players, EnumList.Signal.WAIT});
+            
+            return  Ok(new {players, signal});
         }
         
         
         
         
         
-        [Route("api/playerData/")]
-        public IActionResult PlayersData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState)
+        [Route("api/UpdatePlayerData/")]
+        public IActionResult UpdatePlayerData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState)
         {
             if (playerId == null)
                 return BadRequest("playerId Address is null");
@@ -147,46 +162,63 @@ namespace WebLaserTag.api
             
             if (player == null)
                 return NotFound("Player not found; or the playerId is wrong!");
-            
-            if (gameId == null)
-                return BadRequest("gameId is null");
-            
-            var game = _context.Games.Find(gameId);
-            if (game == null)
-                return NotFound("Game not found; Game Id is incorrect!");
 
-            //ToDo :: A bug here, the player data become always null
+            if (gameId == null)
+                return BadRequest("GameId is null");
+            var game = _context.Games.Find(gameId);
+            
+            if(game == null)
+                return NotFound("Game is not found");
+
             var playerData = _context.PlayersData.Find(playerId);
             
-            //ToDo :: The same bug happened in the next line
-
+            
             if (playerData == null)
             {
-                var newPlayerData = new PlayerData{Player = player, XGeo = xGeo, YGeo = yGeo, HasFlag = hasFlag, CurrentState = currentState, TimeStamp = DateTime.Now};
-                _context.Add(newPlayerData);
+                playerData = new PlayerData
+                {
+                    Player = player, XGeo = xGeo, YGeo = yGeo, HasFlag = hasFlag, CurrentState = currentState,
+                    TimeStamp = DateTime.Now,
+                    PlayerId = playerId
+                };
+                
+                _context.Add(playerData);
                 _context.SaveChanges();
-                return Ok();
+            }
+            else
+            {
+                playerData.XGeo = xGeo;
+                playerData.YGeo = yGeo;
+                playerData.HasFlag = hasFlag;
+                playerData.CurrentState = currentState;
+
+                _context.Update(playerData);
+                _context.SaveChanges();
             }
 
-            playerData.XGeo = xGeo;
-            playerData.YGeo = yGeo;
-            playerData.HasFlag = hasFlag;
-            playerData.CurrentState = currentState;
-
-            _context.Update(playerData);
-            _context.SaveChanges();
-
-
-//            var playersData = _context.PlayersData.Include(x=>x.Player).Include(x=>x.Player.Game).Where(x=>x.Player.Game == game).ToList();
             
-            var playersModel = new List<PlayerDataViewModel>();
 
-//            foreach (var data in playersData)
-//            {
-//                playersModel.Add(new PlayerDataViewModel{MacAddress = data.Player.Id, Name = data.Player.Name, XGeo = data.XGeo, YGeo = data.YGeo, HasFlag = data.HasFlag,CurrentState = data.CurrentState, GivenSignal = EnumList.Signal.NONE});
-//            }
+            var playersInTheGame = new List<string>();
+            var players = new List<PlayerDataViewModel>();
             
-            return Ok(playersModel);
+            playersInTheGame.AddRange(from x in _context.PlayersInGame.ToList() where x.GameId == game.Id select x.PlayerId);
+
+            foreach (var p in playersInTheGame)
+            {
+                var selectedPlayer = _context.PlayersData.Include(x=>x.Player).SingleOrDefault(x => x.PlayerId == p);
+                if (selectedPlayer != null)
+                    players.Add(new PlayerDataViewModel
+                    {
+                        Id = selectedPlayer.PlayerId, Name = selectedPlayer.Player.Name, XGeo = selectedPlayer.XGeo,
+                        YGeo = selectedPlayer.YGeo, CurrentState = selectedPlayer.CurrentState, HasFlag = selectedPlayer.HasFlag,
+                        GivenSignal = EnumList.Signal.NONE
+                    });
+            }
+                
+            
+           
+            
+            return Ok(players);
         }
         
         

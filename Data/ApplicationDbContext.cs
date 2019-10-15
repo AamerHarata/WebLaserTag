@@ -20,6 +20,8 @@ namespace WebLaserTag.Data
             base.OnModelCreating(builder);
             builder.Entity<PlayerInGame>()
                 .HasKey(s => new {s.PlayerId, s.GameId});
+//            builder.Entity<PlayerData>()
+//                .HasKey(s => new {s.PlayerId});
             
 
 

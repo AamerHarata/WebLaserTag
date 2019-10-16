@@ -57,7 +57,7 @@ namespace WebLaserTag.api
             _context.Add(new PlayerInGame {PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now, Host = true});
             _context.SaveChanges();
             
-            var playerData = new PlayerData {PlayerId = player.Id, Player = player, CurrentState = EnumList.State.NONE, TimeStamp = DateTime.Now};
+            var playerData = new PlayerData {PlayerId = player.Id, Player = player, CurrentState = EnumList.State.START_ON_HOLD, TimeStamp = DateTime.Now};
             _context.Add(playerData);
             _context.SaveChanges();
             
@@ -93,7 +93,7 @@ namespace WebLaserTag.api
                 return BadRequest("Wrong password, try again!");
 
             var playerJoin = new PlayerInGame {PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now};
-            var playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.NONE, TimeStamp = DateTime.Now};
+            var playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.START_ON_HOLD, TimeStamp = DateTime.Now};
             
             _context.Add(playerJoin);
             _context.SaveChanges();
@@ -122,7 +122,7 @@ namespace WebLaserTag.api
         }
 
         [Route("api/AwaitPlayers")]
-        public IActionResult AwaitPlayers(string gameId, bool go)
+        public IActionResult AwaitPlayers(string gameId)
         {
 
             if (string.IsNullOrEmpty(gameId))
@@ -133,10 +133,14 @@ namespace WebLaserTag.api
                 return NotFound("No games found");
             
             var signal = EnumList.Signal.WAIT.ToString();
-            if (go)
-                signal = EnumList.Signal.IN.ToString();
+                
 
             var playersInGame = _context.PlayersInGame.Include(x=>x.Player).Include(x => x.Game).Where(x => x.GameId == gameId).ToList();
+
+            var host =_context.PlayersData.Find(playersInGame.SingleOrDefault(x => x.Host)?.PlayerId);
+            if (host == null)
+                return NotFound("Host not found");
+            
             
             if(!playersInGame.Any())
                 return NotFound("No players joined yet");
@@ -146,6 +150,9 @@ namespace WebLaserTag.api
             {
                 players.Add(player.Player);
             }
+            
+            if(host.CurrentState != EnumList.State.START_ON_HOLD)
+                signal = EnumList.Signal.IN.ToString();
 
             
             
@@ -215,6 +222,8 @@ namespace WebLaserTag.api
                     {
                         Id = selectedPlayer.PlayerId, Name = selectedPlayer.Player.Name, XGeo = selectedPlayer.XGeo,
                         YGeo = selectedPlayer.YGeo, CurrentState = selectedPlayer.CurrentState, HasFlag = selectedPlayer.HasFlag,
+                        
+                        //ToDo :: Change this signal due to game logic
                         GivenSignal = EnumList.Signal.NONE
                     });
             }

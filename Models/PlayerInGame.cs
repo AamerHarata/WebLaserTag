@@ -5,7 +5,6 @@ namespace WebLaserTag.Models
 {
     public class PlayerInGame
     {
-        [Key]
         public string PlayerId { get; set; }
         public Player Player { get; set; }
         public bool Host { get; set; }

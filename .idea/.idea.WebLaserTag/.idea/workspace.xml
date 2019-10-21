@@ -2,13 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe2e0287-0536-4a8f-bc28-45f42573ffac" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/api/Receiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Receiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.db" beforeDir="false" afterPath="$PROJECT_DIR$/app.db" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.dll" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/bin/Debug/netcoreapp2.2/WebLaserTag.pdb" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.dll" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.dll" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.pdb" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.pdb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Models/PlayerInGame.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Models/PlayerInGame.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.assets.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -48,11 +45,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="14">
-              <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="12" />
+            <state relative-caret-position="-425">
+              <caret line="124" column="56" selection-start-line="124" selection-start-column="56" selection-end-line="124" selection-end-column="56" />
               <folding>
                 <marker date="1571218843083" expanded="false" signature="6:213" ph="..." />
                 <marker date="1571218843083" expanded="true" signature="240:8385" ph="{...}" />
@@ -78,10 +75,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="45">
-              <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        <entry file="das://69d86c39-289c-447b-84b7-19c9e1ac4a43/schema/main/table/PlayersInGame">
+          <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+            <state>
+              <filtering enabled="true" />
             </state>
           </provider>
         </entry>
@@ -116,7 +113,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Models/Player.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
+            <state relative-caret-position="105">
               <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
               <folding>
                 <marker date="1571060278843" expanded="true" signature="74:194" ph="{...}" />
@@ -127,24 +124,9 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/Models/PlayerData.cs">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-              <folding>
-                <marker date="1571088219741" expanded="false" signature="6:138" ph="..." />
-                <marker date="1571088219741" expanded="true" signature="168:633" ph="{...}" />
-                <marker date="1571088219741" expanded="true" signature="198:631" ph="{...}" />
-                <marker date="1571088219741" expanded="true" signature="528:564" ph="/* [Required] ... */" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/Data/ApplicationDbContext.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
+            <state relative-caret-position="150">
               <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
               <folding>
                 <marker date="1571127846239" expanded="false" signature="6:62" ph="..." />
@@ -158,15 +140,15 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/Models/PlayerInGame.cs">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+            <state relative-caret-position="75">
+              <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
               <folding>
-                <marker date="1571127532492" expanded="false" signature="6:58" ph="..." />
-                <marker date="1571127532492" expanded="true" signature="88:404" ph="{...}" />
-                <marker date="1571127532492" expanded="true" signature="120:402" ph="{...}" />
+                <marker date="1571645262551" expanded="false" signature="6:58" ph="..." />
+                <marker date="1571645262551" expanded="true" signature="88:390" ph="{...}" />
+                <marker date="1571645262551" expanded="true" signature="120:388" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -211,6 +193,7 @@
       <find>new PlayerData</find>
       <find>searc</find>
       <find>NONE</find>
+      <find>await</find>
     </findStrings>
     <replaceStrings>
       <replace>td</replace>
@@ -222,27 +205,29 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Views/Shared/_CookieConsentPartial.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data/ApplicationDbInitializer.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/PlayerService.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Services/IPlayerService.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Views/Home/Index.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/PlayerDataViewModel.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0366DF96-A306-4DFB-8E8E-8F21BCA68142/12/7a8388fc/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Views/Shared/_LiveGame.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CA55E692-DA2C-4C8A-912D-364A352AAD35/df/acd0682e/Thread.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CA55E692-DA2C-4C8A-912D-364A352AAD35/97/e3970785/Lazy`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/api/Receiver.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Views/Home/Players.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Program.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Views/Shared/_LivePlayersData.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Views/Home/PlayerData.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Services/EnumList.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/PlayerData.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Startup.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/Game.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Models/PlayerInGame.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/0366DF96-A306-4DFB-8E8E-8F21BCA68142/12/7a8388fc/ActionMethodExecutor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Views/Shared/_LiveGame.cshtml" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/CA55E692-DA2C-4C8A-912D-364A352AAD35/df/acd0682e/Thread.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Views/Home/Players.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Data/ApplicationDbContext.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Controllers/HomeController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Models/Player.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Startup.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/Game.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Views/Shared/_LivePlayer.cshtml" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Views/Shared/_Layout.cshtml" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Models/PlayerInGame.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -268,10 +253,12 @@
         <option value="$PROJECT_DIR$/Views/Shared/_LivePlayer.cshtml" />
         <option value="$PROJECT_DIR$/Models/PlayerData.cs" />
         <option value="$PROJECT_DIR$/Models/PlayerDataViewModel.cs" />
-        <option value="$PROJECT_DIR$/Models/PlayerInGame.cs" />
         <option value="$PROJECT_DIR$/Data/ApplicationDbContext.cs" />
         <option value="$PROJECT_DIR$/Controllers/HomeController.cs" />
         <option value="$PROJECT_DIR$/api/Receiver.cs" />
+        <option value="$PROJECT_DIR$/Services/IPlayerService.cs" />
+        <option value="$PROJECT_DIR$/Services/PlayerService.cs" />
+        <option value="$PROJECT_DIR$/Models/PlayerInGame.cs" />
       </list>
     </option>
   </component>
@@ -287,14 +274,17 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="AssemblyExplorer" />
-      <pane id="FileSystemExplorer" />
       <pane id="SolutionExplorer">
         <subPane>
           <expand>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
               <item name="WebLaserTag" type="24d0babc:SolutionExplorerModelNode" />
+            </path>
+            <path>
+              <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
+              <item name="WebLaserTag" type="24d0babc:SolutionExplorerModelNode" />
+              <item name="Data" type="24d0babc:SolutionExplorerModelNode" />
             </path>
             <path>
               <item name="Project" type="784c90a0:SolutionExplorerRootNode" />
@@ -306,6 +296,8 @@
         </subPane>
         <option name="show-all-files" value="false" />
       </pane>
+      <pane id="FileSystemExplorer" />
+      <pane id="AssemblyExplorer" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -364,12 +356,14 @@
       <workItem from="1571041909763" duration="9979000" />
       <workItem from="1571084049448" duration="4322000" />
       <workItem from="1571117483765" duration="14337000" />
-      <workItem from="1571218121450" duration="978000" />
+      <workItem from="1571218121450" duration="1609000" />
+      <workItem from="1571593101784" duration="1769000" />
+      <workItem from="1571643047699" duration="678000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="77258000" />
+    <option name="totallyTimeSpent" value="80336000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -382,8 +376,9 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-6" y="-6" width="1719" height="932" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.21106434" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.21587493" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Capture Tool" order="3" />
@@ -391,7 +386,7 @@
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.13449565" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3599004" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3599004" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -711,13 +706,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://69d86c39-289c-447b-84b7-19c9e1ac4a43/schema/main/table/PlayersInGame">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/Data/ApplicationDbInitializer.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="150">
@@ -738,10 +726,59 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/Services/PlayerService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="47" selection-start-line="2" selection-start-column="47" selection-end-line="2" selection-end-column="47" />
+          <folding>
+            <marker date="1571593147282" expanded="true" signature="30:103" ph="{...}" />
+            <marker date="1571593147282" expanded="true" signature="80:101" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Services/IPlayerService.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+          <folding>
+            <marker date="1571593129706" expanded="true" signature="30:91" ph="{...}" />
+            <marker date="1571593129706" expanded="true" signature="68:89" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/appsettings.Development.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="45">
           <caret line="3" column="4" selection-start-line="3" selection-start-column="4" selection-end-line="3" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-425">
+          <caret line="124" column="56" selection-start-line="124" selection-start-column="56" selection-end-line="124" selection-end-column="56" />
+          <folding>
+            <marker date="1571218843083" expanded="false" signature="6:213" ph="..." />
+            <marker date="1571218843083" expanded="true" signature="240:8385" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="305:8383" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="422:474" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="622:1960" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="860:1151" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
+            <marker date="1571218843083" expanded="true" signature="2039:2309" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="2429:3696" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="3799:4281" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="4375:5553" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="5262:5334" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="5786:8278" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="6452:6857" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="6527:6743" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="6874:7170" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="7487:8181" ph="{...}" />
+            <marker date="1571218843083" expanded="true" signature="7740:8165" ph="{...}" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -764,45 +801,6 @@
             <marker date="1571060278860" expanded="false" signature="6:47" ph="..." />
             <marker date="1571060278860" expanded="true" signature="77:700" ph="{...}" />
             <marker date="1571060278860" expanded="true" signature="101:698" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/Player.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
-          <folding>
-            <marker date="1571060278843" expanded="true" signature="74:194" ph="{...}" />
-            <marker date="1571060278843" expanded="true" signature="100:192" ph="{...}" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Models/PlayerData.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
-          <folding>
-            <marker date="1571088219741" expanded="false" signature="6:138" ph="..." />
-            <marker date="1571088219741" expanded="true" signature="168:633" ph="{...}" />
-            <marker date="1571088219741" expanded="true" signature="198:631" ph="{...}" />
-            <marker date="1571088219741" expanded="true" signature="528:564" ph="/* [Required] ... */" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/Data/ApplicationDbContext.cs">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
-          <folding>
-            <marker date="1571127846239" expanded="false" signature="6:62" ph="..." />
-            <marker date="1571127846239" expanded="true" signature="90:864" ph="{...}" />
-            <marker date="1571127846239" expanded="true" signature="141:862" ph="{...}" />
-            <marker date="1571127846239" expanded="true" signature="247:267" ph="{...}" />
-            <marker date="1571127846239" expanded="true" signature="584:856" ph="{...}" />
-            <marker date="1571127846239" expanded="true" signature="739:831" ph="/* builder.Entity&lt;PlayerData&gt;() ... */" />
           </folding>
         </state>
       </provider>
@@ -830,41 +828,60 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/Models/PlayerInGame.cs">
+    <entry file="das://69d86c39-289c-447b-84b7-19c9e1ac4a43/schema/main/table/PlayersInGame">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Data/ApplicationDbContext.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="7" column="12" selection-start-line="7" selection-start-column="12" selection-end-line="7" selection-end-column="12" />
+        <state relative-caret-position="150">
+          <caret line="11" column="50" selection-start-line="11" selection-start-column="50" selection-end-line="11" selection-end-column="50" />
           <folding>
-            <marker date="1571127532492" expanded="false" signature="6:58" ph="..." />
-            <marker date="1571127532492" expanded="true" signature="88:404" ph="{...}" />
-            <marker date="1571127532492" expanded="true" signature="120:402" ph="{...}" />
+            <marker date="1571127846239" expanded="false" signature="6:62" ph="..." />
+            <marker date="1571127846239" expanded="true" signature="90:864" ph="{...}" />
+            <marker date="1571127846239" expanded="true" signature="141:862" ph="{...}" />
+            <marker date="1571127846239" expanded="true" signature="247:267" ph="{...}" />
+            <marker date="1571127846239" expanded="true" signature="584:856" ph="{...}" />
+            <marker date="1571127846239" expanded="true" signature="739:831" ph="/* builder.Entity&lt;PlayerData&gt;() ... */" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
+    <entry file="file://$PROJECT_DIR$/Models/PlayerData.cs">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="14">
-          <caret line="140" column="12" selection-start-line="140" selection-start-column="12" selection-end-line="140" selection-end-column="12" />
+        <state relative-caret-position="135">
+          <caret line="12" column="29" selection-start-line="12" selection-start-column="29" selection-end-line="12" selection-end-column="29" />
           <folding>
-            <marker date="1571218843083" expanded="false" signature="6:213" ph="..." />
-            <marker date="1571218843083" expanded="true" signature="240:8385" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="305:8383" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="422:474" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="622:1960" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="860:1151" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
-            <marker date="1571218843083" expanded="true" signature="2039:2309" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="2429:3696" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="3799:4281" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="4375:5553" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="5262:5334" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="5786:8278" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="6452:6857" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="6527:6743" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="6874:7170" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="7487:8181" ph="{...}" />
-            <marker date="1571218843083" expanded="true" signature="7740:8165" ph="{...}" />
+            <marker date="1571088219741" expanded="false" signature="6:138" ph="..." />
+            <marker date="1571088219741" expanded="true" signature="168:633" ph="{...}" />
+            <marker date="1571088219741" expanded="true" signature="198:631" ph="{...}" />
+            <marker date="1571088219741" expanded="true" signature="528:564" ph="/* [Required] ... */" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/Player.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="7" column="40" selection-start-line="7" selection-start-column="40" selection-end-line="7" selection-end-column="40" />
+          <folding>
+            <marker date="1571060278843" expanded="true" signature="74:194" ph="{...}" />
+            <marker date="1571060278843" expanded="true" signature="100:192" ph="{...}" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/Models/PlayerInGame.cs">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="75">
+          <caret line="6" column="5" selection-start-line="6" selection-start-column="5" selection-end-line="6" selection-end-column="5" />
+          <folding>
+            <marker date="1571645262551" expanded="false" signature="6:58" ph="..." />
+            <marker date="1571645262551" expanded="true" signature="88:390" ph="{...}" />
+            <marker date="1571645262551" expanded="true" signature="120:388" ph="{...}" />
           </folding>
         </state>
       </provider>

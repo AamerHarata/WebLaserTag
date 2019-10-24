@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebLaserTag.Migrations
 {
-    public partial class create : Migration
+    public partial class InitialCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,14 +75,12 @@ namespace WebLaserTag.Migrations
                 {
                     PlayerId = table.Column<string>(nullable: false),
                     GameId = table.Column<string>(nullable: false),
-                    PlayerId1 = table.Column<string>(nullable: true),
                     Host = table.Column<bool>(nullable: false),
                     JoinTime = table.Column<DateTime>(nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_PlayersInGame", x => new { x.PlayerId, x.GameId });
-                    table.UniqueConstraint("AK_PlayersInGame_PlayerId", x => x.PlayerId);
                     table.ForeignKey(
                         name: "FK_PlayersInGame_Games_GameId",
                         column: x => x.GameId,
@@ -90,11 +88,11 @@ namespace WebLaserTag.Migrations
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                     table.ForeignKey(
-                        name: "FK_PlayersInGame_Players_PlayerId1",
-                        column: x => x.PlayerId1,
+                        name: "FK_PlayersInGame_Players_PlayerId",
+                        column: x => x.PlayerId,
                         principalTable: "Players",
                         principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateIndex(
@@ -111,11 +109,6 @@ namespace WebLaserTag.Migrations
                 name: "IX_PlayersInGame_GameId",
                 table: "PlayersInGame",
                 column: "GameId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_PlayersInGame_PlayerId1",
-                table: "PlayersInGame",
-                column: "PlayerId1");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)

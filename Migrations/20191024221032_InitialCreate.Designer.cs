@@ -4,22 +4,19 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 using WebLaserTag.Data;
 
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191015082436_create")]
-    partial class create
+    [Migration("20191024221032_InitialCreate")]
+    partial class InitialCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.SerialColumn)
-                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079")
-                .HasAnnotation("Relational:MaxIdentifierLength", 63);
+                .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
             modelBuilder.Entity("WebLaserTag.Models.Game", b =>
                 {
@@ -99,15 +96,9 @@ namespace WebLaserTag.Migrations
 
                     b.Property<DateTime>("JoinTime");
 
-                    b.Property<string>("PlayerId1");
-
                     b.HasKey("PlayerId", "GameId");
 
-                    b.HasAlternateKey("PlayerId");
-
                     b.HasIndex("GameId");
-
-                    b.HasIndex("PlayerId1");
 
                     b.ToTable("PlayersInGame");
                 });
@@ -135,7 +126,8 @@ namespace WebLaserTag.Migrations
 
                     b.HasOne("WebLaserTag.Models.Player", "Player")
                         .WithMany()
-                        .HasForeignKey("PlayerId1");
+                        .HasForeignKey("PlayerId")
+                        .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
         }

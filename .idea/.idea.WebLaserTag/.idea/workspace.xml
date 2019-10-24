@@ -2,9 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="fe2e0287-0536-4a8f-bc28-45f42573ffac" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.WebLaserTag/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/api/Receiver.cs" beforeDir="false" afterPath="$PROJECT_DIR$/api/Receiver.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.assets.cache" beforeDir="false" afterPath="$PROJECT_DIR$/obj/Debug/netcoreapp2.2/WebLaserTag.assets.cache" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -42,30 +40,30 @@
         <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="600">
-              <caret line="260" column="45" selection-start-line="260" selection-start-column="45" selection-end-line="260" selection-end-column="45" />
+              <caret line="260" column="28" selection-start-line="260" selection-start-column="28" selection-end-line="260" selection-end-column="28" />
               <folding>
-                <marker date="1571954455611" expanded="false" signature="6:213" ph="..." />
-                <marker date="1571954455611" expanded="true" signature="240:9611" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="305:9609" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="422:474" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="622:2513" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="860:1151" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
-                <marker date="1571954455611" expanded="true" signature="1866:2162" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="2179:2448" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="2592:2862" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="2982:4907" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="4104:4369" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="4386:4781" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="5010:5492" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="5586:6764" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="6473:6545" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="6997:9504" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="7663:8068" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="7738:7954" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="8085:8381" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="8698:9392" ph="{...}" />
-                <marker date="1571954455611" expanded="true" signature="8951:9376" ph="{...}" />
+                <marker date="1571955000193" expanded="false" signature="6:213" ph="..." />
+                <marker date="1571955000193" expanded="true" signature="240:9611" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="305:9609" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="422:474" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="622:2513" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="860:1151" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
+                <marker date="1571955000193" expanded="true" signature="1866:2162" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="2179:2448" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="2592:2862" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="2982:4907" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="4104:4369" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="4386:4781" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="5010:5492" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="5586:6764" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="6473:6545" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="6997:9504" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="7663:8068" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="7738:7954" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="8085:8381" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="8698:9392" ph="{...}" />
+                <marker date="1571955000193" expanded="true" signature="8951:9376" ph="{...}" />
               </folding>
             </state>
           </provider>
@@ -344,12 +342,12 @@
       <workItem from="1571643047699" duration="1322000" />
       <workItem from="1571754305353" duration="1198000" />
       <workItem from="1571897524801" duration="4374000" />
-      <workItem from="1571921446418" duration="3181000" />
+      <workItem from="1571921446418" duration="3725000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="89733000" />
+    <option name="totallyTimeSpent" value="90277000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -901,30 +899,30 @@
     <entry file="file://$PROJECT_DIR$/api/Receiver.cs">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="600">
-          <caret line="260" column="45" selection-start-line="260" selection-start-column="45" selection-end-line="260" selection-end-column="45" />
+          <caret line="260" column="28" selection-start-line="260" selection-start-column="28" selection-end-line="260" selection-end-column="28" />
           <folding>
-            <marker date="1571954455611" expanded="false" signature="6:213" ph="..." />
-            <marker date="1571954455611" expanded="true" signature="240:9611" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="305:9609" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="422:474" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="622:2513" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="860:1151" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
-            <marker date="1571954455611" expanded="true" signature="1866:2162" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="2179:2448" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="2592:2862" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="2982:4907" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="4104:4369" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="4386:4781" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="5010:5492" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="5586:6764" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="6473:6545" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="6997:9504" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="7663:8068" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="7738:7954" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="8085:8381" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="8698:9392" ph="{...}" />
-            <marker date="1571954455611" expanded="true" signature="8951:9376" ph="{...}" />
+            <marker date="1571955000193" expanded="false" signature="6:213" ph="..." />
+            <marker date="1571955000193" expanded="true" signature="240:9611" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="305:9609" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="422:474" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="622:2513" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="860:1151" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="1179:1284" ph="/* ToDo :: Make it random inside the map range; ... */" />
+            <marker date="1571955000193" expanded="true" signature="1866:2162" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="2179:2448" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="2592:2862" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="2982:4907" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="4104:4369" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="4386:4781" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="5010:5492" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="5586:6764" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="6473:6545" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="6997:9504" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="7663:8068" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="7738:7954" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="8085:8381" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="8698:9392" ph="{...}" />
+            <marker date="1571955000193" expanded="true" signature="8951:9376" ph="{...}" />
           </folding>
         </state>
       </provider>

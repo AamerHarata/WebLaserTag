@@ -54,12 +54,26 @@ namespace WebLaserTag.api
             _context.SaveChanges();
 
 
-            _context.Add(new PlayerInGame {PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now, Host = true});
+            var playerInGame = new PlayerInGame{PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now, Host = true};
+            _context.Add(playerInGame);
             _context.SaveChanges();
+
+            var playerData = _context.PlayersData.Include(x => x.Player).SingleOrDefault(x => x.PlayerId == player.Id);
+            if (playerData == null)
+            {
+                playerData = new PlayerData {PlayerId = player.Id, Player = player, CurrentState = EnumList.State.START_ON_HOLD, TimeStamp = DateTime.Now, XGeo = startX, YGeo = startY};
+                _context.Add(playerData);
+                _context.SaveChanges();
+            }
+            else
+            {
+                playerData.CurrentState = EnumList.State.START_ON_HOLD;
+                playerData.XGeo = startX;
+                playerData.YGeo = startY;
+                _context.Update(playerData);
+                _context.SaveChanges();
+            }
             
-            var playerData = new PlayerData {PlayerId = player.Id, Player = player, CurrentState = EnumList.State.START_ON_HOLD, TimeStamp = DateTime.Now};
-            _context.Add(playerData);
-            _context.SaveChanges();
             
             return Ok(game);
         }
@@ -76,7 +90,7 @@ namespace WebLaserTag.api
         [Route("api/JoinGame")]
         public IActionResult JoinGame(string gameId, string playerId, string password)
         {
-            var game = _context.Games.Find(gameId);
+            var game = _context.Games.Include(x=>x.Host).SingleOrDefault(x=>x.Id == gameId);
             if (game == null)
                 return NotFound("Game not found / wrong game Id");
 
@@ -93,13 +107,26 @@ namespace WebLaserTag.api
                 return BadRequest("Wrong password, try again!");
 
             var playerJoin = new PlayerInGame {PlayerId = player.Id, Game = game, Player = player, JoinTime = DateTime.Now};
-            var playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.START_ON_HOLD, TimeStamp = DateTime.Now};
             
             _context.Add(playerJoin);
             _context.SaveChanges();
 
-            _context.Add(playerData);
-            _context.SaveChanges();
+
+            var playerData = _context.PlayersData.Include(x => x.Player).SingleOrDefault(x => x.PlayerId == playerId);
+            if (playerData == null)
+            {
+                playerData = new PlayerData {PlayerId = playerId, Player = player, CurrentState = EnumList.State.START_ON_HOLD, TimeStamp = DateTime.Now};
+                _context.Add(playerData);
+                _context.SaveChanges();
+            }
+            else
+            {
+                playerData.CurrentState = _context.PlayersData.Include(x => x.Player).SingleOrDefault(x => x.PlayerId == game.HostId)
+                                              .CurrentState == EnumList.State.START_ON_HOLD ? EnumList.State.START_ON_HOLD : EnumList.State.AROUND;
+                _context.Update(playerData);
+                _context.SaveChanges();
+            }
+            
             
             return Ok("Game Joined -- you will be on hold while the other players join");
         }

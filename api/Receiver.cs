@@ -258,7 +258,7 @@ namespace WebLaserTag.api
             
            
             
-            return Ok(players);
+            return Ok(new {Players = player});
         }
         
         

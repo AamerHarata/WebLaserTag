@@ -67,13 +67,13 @@ namespace WebLaserTag.Controllers
                 where x.GameId == gameId
                 select x.PlayerId;
 
-            var allPlayersData = _context.PlayersData.Include(x => x.Player).ToList();
+//            var allPlayersData = _context.PlayersData.Include(x => x.Player).ToList();
             
-            var playerData = new List<PlayerData>();
+            var playerData = playersInGame.Select(playerId => _context.PlayersData.Include(x => x.Player).SingleOrDefault(x => x.PlayerId == playerId)).ToList();
 
-            foreach (var player in allPlayersData)
-                playerData.Add(player);
-            
+//            foreach (var player in allPlayersData)
+//                playerData.Add(player);
+
             return PartialView("_LivePlayersData", playerData);
         }
         

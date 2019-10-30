@@ -249,7 +249,7 @@ namespace WebLaserTag.api
                     {
                         Id = selectedPlayer.PlayerId, Name = selectedPlayer.Player.Name, XGeo = selectedPlayer.XGeo,
                         YGeo = selectedPlayer.YGeo, CurrentState = selectedPlayer.CurrentState.ToString(), HasFlag = selectedPlayer.HasFlag,
-                        GivenSignal = selectedPlayer.GivenSignal
+                        GivenSignal = selectedPlayer.GivenSignal.ToString()
                     });
             }
                 

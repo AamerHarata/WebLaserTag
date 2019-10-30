@@ -10,6 +10,6 @@ namespace WebLaserTag.Models
         public double YGeo { get; set; }
         public string CurrentState { get; set; }
         public bool HasFlag { get; set; }
-        public EnumList.Signal GivenSignal { get; set; }
+        public string GivenSignal { get; set; }
     }
 }

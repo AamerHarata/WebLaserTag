@@ -248,9 +248,7 @@ namespace WebLaserTag.api
                     players.Add(new PlayerDataViewModel
                     {
                         Id = selectedPlayer.PlayerId, Name = selectedPlayer.Player.Name, XGeo = selectedPlayer.XGeo,
-                        YGeo = selectedPlayer.YGeo, CurrentState = selectedPlayer.CurrentState, HasFlag = selectedPlayer.HasFlag,
-                        
-                        //ToDo :: Change this signal due to game logic
+                        YGeo = selectedPlayer.YGeo, CurrentState = selectedPlayer.CurrentState.ToString(), HasFlag = selectedPlayer.HasFlag,
                         GivenSignal = selectedPlayer.GivenSignal
                     });
             }

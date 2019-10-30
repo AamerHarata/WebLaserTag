@@ -7,16 +7,19 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using WebLaserTag.Data;
 using WebLaserTag.Models;
+using WebLaserTag.Services;
 
 namespace WebLaserTag.Controllers
 {
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly IPlayerService _playerService;
 
-        public HomeController(ApplicationDbContext context)
+        public HomeController(ApplicationDbContext context, IPlayerService playerService)
         {
             _context = context;
+            _playerService = playerService;
         }
         public IActionResult Index()
         {
@@ -39,6 +42,12 @@ namespace WebLaserTag.Controllers
                 return BadRequest("Game Id is null");
             ViewBag.gameId = gameId;
             return View();
+        }
+
+        [Route("/livePlayerDataTest/")]
+        public IActionResult LiveTest(string gameId)
+        {
+            return Ok(_playerService.GetPlayersInGame(gameId));
         }
 
         

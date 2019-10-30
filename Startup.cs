@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using WebLaserTag.Data;
+using WebLaserTag.Services;
 
 namespace WebLaserTag
 {
@@ -50,6 +51,8 @@ namespace WebLaserTag
                     options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
 
             }
+
+            services.AddTransient<IPlayerService, PlayerService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

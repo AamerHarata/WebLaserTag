@@ -81,7 +81,7 @@ namespace WebLaserTag.api
         [Route("api/SearchGames")]
         public IActionResult SearchGames()
         {
-            var games = _context.Games.Include(x=>x.Host).Where(x => !x.Ended).ToList();
+            var games = _context.Games.Include(x=>x.Host).Where(x => !x.Ended).OrderByDescending(x=>x.TimeStamp).ToList();
             if (games.Any())
                 return Ok(games);
             return NotFound("No games -- You can start new one and invite your friends to play");
@@ -251,7 +251,7 @@ namespace WebLaserTag.api
                         YGeo = selectedPlayer.YGeo, CurrentState = selectedPlayer.CurrentState, HasFlag = selectedPlayer.HasFlag,
                         
                         //ToDo :: Change this signal due to game logic
-                        GivenSignal = EnumList.Signal.NONE
+                        GivenSignal = selectedPlayer.GivenSignal
                     });
             }
                 
@@ -259,6 +259,20 @@ namespace WebLaserTag.api
            
             
             return Ok(new {players = players});
+        }
+
+
+        [Route("api/ExternalSignal")]
+        public IActionResult ExternalSignal(string playerId, EnumList.Signal signal)
+        {
+            var player = _context.PlayersData.Include(x => x.Player).SingleOrDefault(x => x.PlayerId == playerId);
+            if (player == null)
+                return BadRequest("Player not found");
+            player.GivenSignal = signal;
+            _context.Update(player);
+            _context.SaveChanges();
+            return Ok();
+
         }
         
         

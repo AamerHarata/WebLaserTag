@@ -33,3 +33,4 @@ D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.
 D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LivePlayersData.g.cshtml.cs
 D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LivePlayer.g.cshtml.cs
 D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\Razor\Views\Shared\_LiveGame.g.cshtml.cs
+D:\GitFolders\Programming\Twente\FinalProjcet\WebLaserTag\obj\Debug\netcoreapp2.2\Razor\Views\Home\PlayerData1.g.cshtml.cs

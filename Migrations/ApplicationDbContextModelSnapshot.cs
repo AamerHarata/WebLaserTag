@@ -67,6 +67,8 @@ namespace WebLaserTag.Migrations
 
                     b.Property<int>("CurrentState");
 
+                    b.Property<int>("GivenSignal");
+
                     b.Property<bool>("HasFlag");
 
                     b.Property<string>("PlayerId1");

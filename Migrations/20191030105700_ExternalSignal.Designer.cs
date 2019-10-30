@@ -9,8 +9,8 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191024221032_InitialCreate")]
-    partial class InitialCreate
+    [Migration("20191030105700_ExternalSignal")]
+    partial class ExternalSignal
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -68,6 +68,8 @@ namespace WebLaserTag.Migrations
                         .ValueGeneratedOnAdd();
 
                     b.Property<int>("CurrentState");
+
+                    b.Property<int>("GivenSignal");
 
                     b.Property<bool>("HasFlag");
 

@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebLaserTag.Migrations
 {
-    public partial class ExternalSignal : Migration
+    public partial class Flag : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -56,6 +56,7 @@ namespace WebLaserTag.Migrations
                     TimeStamp = table.Column<DateTime>(nullable: false),
                     CurrentState = table.Column<int>(nullable: false),
                     HasFlag = table.Column<bool>(nullable: false),
+                    Azimuth = table.Column<int>(nullable: false),
                     GivenSignal = table.Column<int>(nullable: false),
                     PlayerId1 = table.Column<string>(nullable: true)
                 },

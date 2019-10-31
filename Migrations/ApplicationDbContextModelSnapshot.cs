@@ -65,6 +65,8 @@ namespace WebLaserTag.Migrations
                     b.Property<string>("PlayerId")
                         .ValueGeneratedOnAdd();
 
+                    b.Property<int>("Azimuth");
+
                     b.Property<int>("CurrentState");
 
                     b.Property<int>("GivenSignal");

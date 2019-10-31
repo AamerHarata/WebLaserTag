@@ -28,7 +28,8 @@ namespace WebLaserTag.api
             var player = _context.Players.Find(hostId);
             if (player == null)
                 return NotFound("Player not found, check host id");
-            
+
+            var flagPosition = RandomPointInCircle(startX, startY);
             
             var game = new Game
             {
@@ -36,8 +37,8 @@ namespace WebLaserTag.api
                 Password = password,
                 StartX = startX,
                 StartY = startY,
-                FlagX = startX,
-                FlagY = startY,
+                FlagX = flagPosition[0],
+                FlagY = flagPosition[1],
                 TimeStamp = DateTime.Now,
                 FlagHolder = "None"
             };
@@ -191,7 +192,7 @@ namespace WebLaserTag.api
         
         
         [Route("api/UpdatePlayerData/")]
-        public IActionResult UpdatePlayerData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState)
+        public IActionResult UpdatePlayerData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState, int azimuth)
         {
             if (playerId == null)
                 return BadRequest("playerId Address is null");
@@ -217,7 +218,7 @@ namespace WebLaserTag.api
                 {
                     Player = player, XGeo = xGeo, YGeo = yGeo, HasFlag = hasFlag, CurrentState = currentState,
                     TimeStamp = DateTime.Now,
-                    PlayerId = playerId
+                    PlayerId = playerId, Azimuth = azimuth
                 };
                 
                 _context.Add(playerData);
@@ -229,6 +230,7 @@ namespace WebLaserTag.api
                 playerData.YGeo = yGeo;
                 playerData.HasFlag = hasFlag;
                 playerData.CurrentState = currentState;
+                playerData.Azimuth = azimuth;
 
                 _context.Update(playerData);
                 _context.SaveChanges();
@@ -271,6 +273,34 @@ namespace WebLaserTag.api
             _context.SaveChanges();
             return Ok();
 
+        }
+
+        private double[] RandomPointInCircle(double x0, double y0)
+        {
+            var rand = new Random();
+            var radius = rand.NextDouble() * (0.0022 - 0.0006) + 0.0006;
+            var x = rand.NextDouble() * ((x0 + radius) - (x0 - radius)) + (x0 - radius);
+
+            var ys = GetYValue(x, x0, y0, radius);
+            var randomIndex = new Random();
+            var y = ys[randomIndex.Next(ys.Length)];
+            
+            //ToDo :: Change return value
+            return new []{x, y};
+
+        }
+
+        private double[] GetYValue(double x, double x0, double y0, double r)
+        {
+            var pointOnRadius = Math.Sqrt(-(x - x0) * (x - x0) + r * r);
+            return new double[]{pointOnRadius + y0, - pointOnRadius + y0};
+        }
+
+
+        [Route("api/TestValue/")]
+        public IActionResult TestValue()
+        {
+            return Ok(new {Value = RandomPointInCircle(52, 6)});
         }
         
         

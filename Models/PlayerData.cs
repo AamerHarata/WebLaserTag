@@ -17,7 +17,7 @@ namespace WebLaserTag.Models
         public DateTime TimeStamp { get; set; }
         public EnumList.State CurrentState { get; set; }
         public bool HasFlag { get; set; }
-        
+        public int Azimuth { get; set; }
         public EnumList.Signal GivenSignal { get; set; }
         public Player Player { get; set; }
         

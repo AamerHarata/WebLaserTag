@@ -18,6 +18,7 @@ namespace WebLaserTag.Models
         public EnumList.State CurrentState { get; set; }
         public bool HasFlag { get; set; }
         public int Azimuth { get; set; }
+        public string AimingAgainst { get; set; }
         public EnumList.Signal GivenSignal { get; set; }
         public Player Player { get; set; }
         

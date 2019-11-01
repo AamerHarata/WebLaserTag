@@ -192,7 +192,7 @@ namespace WebLaserTag.api
         
         
         [Route("api/UpdatePlayerData/")]
-        public IActionResult UpdatePlayerData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState, int azimuth)
+        public IActionResult UpdatePlayerData(string gameId, string playerId, double xGeo, double yGeo, bool hasFlag, EnumList.State currentState, int azimuth, string aimingAgainst)
         {
             if (playerId == null)
                 return BadRequest("playerId Address is null");
@@ -217,8 +217,7 @@ namespace WebLaserTag.api
                 playerData = new PlayerData
                 {
                     Player = player, XGeo = xGeo, YGeo = yGeo, HasFlag = hasFlag, CurrentState = currentState,
-                    TimeStamp = DateTime.Now,
-                    PlayerId = playerId, Azimuth = azimuth
+                    TimeStamp = DateTime.Now, PlayerId = playerId, Azimuth = azimuth, AimingAgainst = aimingAgainst
                 };
                 
                 _context.Add(playerData);
@@ -231,6 +230,7 @@ namespace WebLaserTag.api
                 playerData.HasFlag = hasFlag;
                 playerData.CurrentState = currentState;
                 playerData.Azimuth = azimuth;
+                playerData.AimingAgainst = aimingAgainst;
 
                 _context.Update(playerData);
                 _context.SaveChanges();

@@ -9,8 +9,8 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191031095356_Flag")]
-    partial class Flag
+    [Migration("20191101201211_aimingAgainst")]
+    partial class aimingAgainst
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -66,6 +66,8 @@ namespace WebLaserTag.Migrations
                 {
                     b.Property<string>("PlayerId")
                         .ValueGeneratedOnAdd();
+
+                    b.Property<string>("AimingAgainst");
 
                     b.Property<int>("Azimuth");
 

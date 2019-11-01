@@ -23,6 +23,11 @@
       </e>
       <e p="docker-compose.yml" t="Include" />
       <e p="Dockerfile" t="Include" />
+      <e p="Migrations" t="Include">
+        <e p="20191031095356_Flag.cs" t="Include" />
+        <e p="20191031095356_Flag.Designer.cs" t="Include" />
+        <e p="ApplicationDbContextModelSnapshot.cs" t="Include" />
+      </e>
       <e p="Models" t="Include">
         <e p="ErrorViewModel.cs" t="Include" />
         <e p="Game.cs" t="Include" />

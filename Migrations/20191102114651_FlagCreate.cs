@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WebLaserTag.Migrations
 {
-    public partial class aimingAgainst : Migration
+    public partial class FlagCreate : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -73,6 +73,28 @@ namespace WebLaserTag.Migrations
                 });
 
             migrationBuilder.CreateTable(
+                name: "Flag",
+                columns: table => new
+                {
+                    GameId = table.Column<string>(nullable: false),
+                    XGeo = table.Column<double>(nullable: false),
+                    YGeo = table.Column<double>(nullable: false),
+                    Free = table.Column<bool>(nullable: false),
+                    holderId = table.Column<string>(nullable: true),
+                    GameId1 = table.Column<string>(nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Flag", x => x.GameId);
+                    table.ForeignKey(
+                        name: "FK_Flag_Games_GameId1",
+                        column: x => x.GameId1,
+                        principalTable: "Games",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
+                });
+
+            migrationBuilder.CreateTable(
                 name: "PlayersInGame",
                 columns: table => new
                 {
@@ -99,6 +121,11 @@ namespace WebLaserTag.Migrations
                 });
 
             migrationBuilder.CreateIndex(
+                name: "IX_Flag_GameId1",
+                table: "Flag",
+                column: "GameId1");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Games_HostId",
                 table: "Games",
                 column: "HostId");
@@ -116,6 +143,9 @@ namespace WebLaserTag.Migrations
 
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropTable(
+                name: "Flag");
+
             migrationBuilder.DropTable(
                 name: "PlayersData");
 

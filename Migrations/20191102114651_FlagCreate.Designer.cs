@@ -9,14 +9,36 @@ using WebLaserTag.Data;
 namespace WebLaserTag.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20191101201211_aimingAgainst")]
-    partial class aimingAgainst
+    [Migration("20191102114651_FlagCreate")]
+    partial class FlagCreate
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
                 .HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
+
+            modelBuilder.Entity("WebLaserTag.Models.Flag", b =>
+                {
+                    b.Property<string>("GameId")
+                        .ValueGeneratedOnAdd();
+
+                    b.Property<bool>("Free");
+
+                    b.Property<string>("GameId1");
+
+                    b.Property<double>("XGeo");
+
+                    b.Property<double>("YGeo");
+
+                    b.Property<string>("holderId");
+
+                    b.HasKey("GameId");
+
+                    b.HasIndex("GameId1");
+
+                    b.ToTable("Flag");
+                });
 
             modelBuilder.Entity("WebLaserTag.Models.Game", b =>
                 {
@@ -107,6 +129,13 @@ namespace WebLaserTag.Migrations
                     b.HasIndex("GameId");
 
                     b.ToTable("PlayersInGame");
+                });
+
+            modelBuilder.Entity("WebLaserTag.Models.Flag", b =>
+                {
+                    b.HasOne("WebLaserTag.Models.Game", "Game")
+                        .WithMany()
+                        .HasForeignKey("GameId1");
                 });
 
             modelBuilder.Entity("WebLaserTag.Models.Game", b =>

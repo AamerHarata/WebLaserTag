@@ -14,6 +14,8 @@ namespace WebLaserTag.Data
         public DbSet<PlayerData> PlayersData { get; set; }
         public DbSet<PlayerInGame> PlayersInGame { get; set; }
         
+        public DbSet<Flag> Flag { get; set; }
+        
         
         protected override void OnModelCreating(ModelBuilder builder)
         {

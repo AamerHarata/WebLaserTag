@@ -13,10 +13,12 @@ namespace WebLaserTag.api
     public class Receiver : ControllerBase
     {
         private readonly ApplicationDbContext _context;
+        private readonly IPlayerService _playerService;
 
-        public Receiver(ApplicationDbContext context)
+        public Receiver(ApplicationDbContext context, IPlayerService playerService)
         {
             _context = context;
+            _playerService = playerService;
         }
 
         
@@ -44,10 +46,16 @@ namespace WebLaserTag.api
             };
             
 
-            //ToDo :: Make it random inside the map range;
-            //ToDo :: Make it random inside the map range;
-
             _context.Add(game);
+            _context.SaveChanges();
+            
+            //Creating the flag
+            var flag = new Flag
+            {
+                Game = game, XGeo = flagPosition[0], YGeo = flagPosition[1], GameId = game.Id, Free = true, holderId = "Map"
+            };
+
+            _context.Add(flag);
             _context.SaveChanges();
 
             game.Name = player.Name + "-" + game.Id.Split("-")[0];
@@ -209,6 +217,10 @@ namespace WebLaserTag.api
             if(game == null)
                 return NotFound("Game is not found");
 
+            var flag = _context.Flag.FirstOrDefault(x => x.GameId == gameId);
+            if (flag == null)
+                return NotFound("Flag is null");
+
             var playerData = _context.PlayersData.Find(playerId);
             
             
@@ -235,6 +247,42 @@ namespace WebLaserTag.api
                 _context.Update(playerData);
                 _context.SaveChanges();
             }
+            
+            //If the player didn't have the flag but got it now, remove the flag from any other possible player has the flag
+            if (!playerData.HasFlag && hasFlag)
+            {
+                var inGame = _playerService.GetPlayersInGame(gameId).ToList();
+                foreach (var p in inGame)
+                {
+                    if (p.PlayerId == playerId || !p.HasFlag) continue;
+                    p.HasFlag = false;
+                    _context.Update(flag);
+                    _context.SaveChanges();
+                }
+            }
+
+
+            //If the player had the flag, but the info says he lost it
+            if (playerData.HasFlag && !hasFlag)
+            {
+                flag.Free = true;
+                flag.holderId = "Map";
+                _context.Update(flag);
+                _context.SaveChanges();
+                
+            }
+            
+            
+            //Both if the player had or got the flag now
+            if (hasFlag)
+            {
+                flag.XGeo = xGeo;
+                flag.YGeo = yGeo;
+                flag.Free = false;
+                flag.holderId = playerId;
+                _context.Update(flag);
+                _context.SaveChanges();
+            }
 
             
 
@@ -258,7 +306,7 @@ namespace WebLaserTag.api
             
            
             
-            return Ok(new {players = players});
+            return Ok(new {players = players, flag = flag});
         }
 
 
